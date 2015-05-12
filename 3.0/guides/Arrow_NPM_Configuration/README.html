@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Arrow NPM Configuration</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta content="Scroll EclipseHelp Exporter" name="generator"/>
+
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" media="print"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header"/>
+
+        <div id="43299038" class="content">
+            <h1>Arrow NPM Configuration</h1>
+    <p>
+    </p>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_NPM_Configuration-section-43299038_ArrowNPMConfiguration-bodyParser">bodyParser</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_NPM_Configuration-section-43299038_ArrowNPMConfiguration-dependencies">dependencies</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_NPM_Configuration-section-43299038_ArrowNPMConfiguration-engines">engines</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_NPM_Configuration-section-43299038_ArrowNPMConfiguration-main">main</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_NPM_Configuration-section-43299038_ArrowNPMConfiguration-name">name</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_NPM_Configuration-section-43299038_ArrowNPMConfiguration-npmAuthentication">npmAuthentication</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_NPM_Configuration-section-43299038_ArrowNPMConfiguration-npmRegistry">npmRegistry</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_NPM_Configuration-section-43299038_ArrowNPMConfiguration-scripts">scripts</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_NPM_Configuration-section-43299038_ArrowNPMConfiguration-version">version</a>    </p>
+</li></ul>    <p>
+An Arrow application contains a file called <tt class=" ">package.json</tt> located in the root directory of the project. Arrow Cloud uses the <tt class=" ">package.json</tt> file to configure settings and install dependencies for the application.    </p>
+    <p>
+Important fields for Arrow applications are defined below and may be different from the <a class="external-link external-link" href="https://www.npmjs.org/doc/files/package.json.html" target="_blank">npm version</a>.    </p>
+    <div class="section section-2 " id="43299038_ArrowNPMConfiguration-bodyParser">
+        <h2 class="heading "><span>bodyParser</span></h2>
+    <p>
+<strong class=" ">Available only for Arrow Cloud applications using the MVC framework.</strong>    </p>
+    <p>
+A boolean that specifies whether Arrow Cloud should load the <a class="external-link external-link" href="https://github.com/expressjs/body-parser" target="_blank">body-parser middleware</a>. This is middleware that makes the body of an HTTP request available as <tt class=" ">req.body</tt> to the controller.    </p>
+    </div>
+    <div class="section section-2 " id="43299038_ArrowNPMConfiguration-dependencies">
+        <h2 class="heading "><span>dependencies</span></h2>
+    <p>
+The application can import any third-party modules that are supported by standard Node.js applications. Before publishing the app to the cloud, make sure all dependencies are listed in the <tt class=" ">dependencies</tt> field in the application&apos;s <tt class=" ">package.json</tt> file. For example, to add support for MongoDB 1.2.0 or greater:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">  </code><code class="string">&quot;dependencies&quot;</code><code class="plain">:{ </code><code class="string">&quot;mongodb&quot;</code><code class="plain">: </code><code class="string">&quot;&gt;1.2.0&quot;</code><code class="plain"> }</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    </div>
+    <div class="section section-2 " id="43299038_ArrowNPMConfiguration-engines">
+        <h2 class="heading "><span>engines</span></h2>
+    <p>
+You can specify which version of Node.js to run your application on. Use the <tt class=" ">engines</tt> field in <tt class=" ">package.json</tt> to specify engine versions. To specify the Node.js version, set the <tt class=" ">node</tt> key in the <tt class=" ">engines</tt> dictionary to either a version or <a class="external-link external-link" href="https://github.com/isaacs/node-semver" target="_blank">version range</a> of Node.js to use. For example, to specify to use version 0.10.22 or greater:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">  </code><code class="string">&quot;engines&quot;</code><code class="plain"> : { </code><code class="string">&quot;node&quot;</code><code class="plain">: </code><code class="string">&quot;&gt;=0.10.22&quot;</code><code class="plain"> }</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    <p>
+If this field is undefined when you publish your application, the latest supported Node.js version is used. The current supported version is 0.10.22.    </p>
+    <p>
+If this field is undefined when you republish your application and the latest supported Node.js version changed on the Arrow Cloud servers, you will receive an error message when trying to publish your application. You must set the Node.js version to republish your application.    </p>
+    </div>
+    <div class="section section-2 " id="43299038_ArrowNPMConfiguration-main">
+        <h2 class="heading "><span>main</span></h2>
+    <p>
+Arrow Cloud uses the <tt class=" ">main</tt> field in <tt class=" ">package.json</tt> to determine the application&apos;s main entry point. Set this field to a JavaScript file. Arrow Cloud loads and runs this file first.    </p>
+    <p>
+By default, the <tt class=" ">main</tt> field is set to the <tt class=" ">app.js</tt> file located in the project&apos;s root folder:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">  </code><code class="string">&quot;main&quot;</code><code class="plain">: </code><code class="string">&quot;app.js&quot;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    <p>
+You can load a module by leaving this field blank and specifying the <tt class=" ">scripts</tt> field.    </p>
+    </div>
+    <div class="section section-2 " id="43299038_ArrowNPMConfiguration-name">
+        <h2 class="heading "><span>name</span></h2>
+    <p>
+Use the <tt class=" ">name</tt> field to specify the name of the application. An app&apos;s name must be unique across all apps of a user or organization. It will be used to ID the app when publishing/unpublishing to the cloud, or setup the app through CLI commands.    </p>
+    <p>
+By default, this field is set to the name of the project when it was created.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">  </code><code class="string">&quot;name&quot;</code><code class="plain">: </code><code class="string">&quot;MyArrowApp&quot;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    </div>
+    <div class="section section-2 " id="43299038_ArrowNPMConfiguration-npmAuthentication">
+        <h2 class="heading "><span>npmAuthentication</span></h2>
+    <p>
+To enable authenticated package installs from a private npm registry specified by <a class="external-link external-link" href="/arrowdb/latest/#!/guide/node_config-section-npmregistry">npmRegistry</a>, add the <tt class=" ">npmAuthentication</tt> field in your application&apos;s package.json file and set it to <tt class=" ">true</tt>:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">  </code><code class="string">&quot;npmAuthentication&quot;</code><code class="plain">: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    <p>
+    <span style="color: #222222;">
+When enabled, you must provide login credentials for the npm registry when calling     </span>
+ <tt class=" ">acs publish</tt>     <span style="color: #222222;">
+. You can provide the credentials on the command line when calling the     </span>
+ <tt class=" ">publish</tt>     <span style="color: #222222;">
+ command:     </span>
+    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">$ appc cloud publish myuser mypwd</code></div>
+</div>
+</div>    <p>
+    <span style="color: #222222;">
+If no credentials are provided on the command line, t    </span>
+he Appclerator CLI will attempt to read the credentials from <tt class=" ">~/.npmrc</tt>. If no <tt class=" ">~/.npmrc</tt> file is found, or it does not contain any credentials, you are prompted for the npm username and password:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">$ appc cloud publish</code></div>
+<div class="line"><code class="plain">npm username: admin</code></div>
+<div class="line"><code class="plain">npm password: ***********</code></div>
+<div class="line"><code class="plain">Preparing application </code><code class="keyword">for</code><code class="plain"> publish... done</code></div>
+</div>
+</div>    <p>
+<strong class=" ">Note</strong>: If you use a private npm registry hosted by Nodejitsu, you must first synchronize your public npm user account with the private npm, otherwise you will get &quot;unauthorized&quot; error. To do this, enter the following <tt class=" ">npm</tt> commands:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">$ npm config set strict-ssl </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">$ npm config set ca </code><code class="string">&quot;&quot;</code></div>
+<div class="line"><code class="plain">$ npm config set registry https:</code><code class="comments">//&lt;your-subdomain&gt;.registry.nodejitsu.com</code></div>
+<div class="line"><code class="plain">$ npm login </code></div>
+</div>
+</div>    <p>
+See <a class="external-link external-link" href="https://www.nodejitsu.com/documentation/npm/cli/" target="_blank">https://www.nodejitsu.com/documentation/npm/cli/</a> for more information.    </p>
+    </div>
+    <div class="section section-2 " id="43299038_ArrowNPMConfiguration-npmRegistry">
+        <h2 class="heading "><span>npmRegistry</span></h2>
+    <p>
+If you want to use a different npm registry besides the official public npm registry to install dependencies, add the <tt class=" ">npmRegistry</tt> field to the <tt class=" ">package.json</tt> and set the value to the registry URL you want to use. For example, the entry below uses a European npm mirror:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">  </code><code class="string">&quot;npmRegistry&quot;</code><code class="plain"> : </code><code class="string">&quot;http://registry.npmjs.eu/&quot;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    <p>
+To require authentication for npm installs, add the <tt class=" ">npmAuthentication</tt> field to your <tt class=" ">package.json</tt> file.    </p>
+    </div>
+    <div class="section section-2 " id="43299038_ArrowNPMConfiguration-scripts">
+        <h2 class="heading "><span>scripts</span></h2>
+    <p>
+<strong class=" ">Available only to standard Arrow Cloud applications that do <u class=" ">NOT</u> use the MVC framework.</strong>    </p>
+    <p>
+If your application&apos;s <tt class=" ">package.json</tt> file does not specify a <tt class=" ">main</tt> field, Appcelerator Cloud will now look at the <tt class=" ">scripts.start</tt> field in <tt class=" ">package.json</tt> to determine the main module to launch. Appcelerator Cloud will execute the start script using <tt class=" ">npm start</tt>.    </p>
+    <p>
+See the <a class="external-link external-link" href="https://www.npmjs.org/doc/misc/npm-scripts.html" target="_blank">NPM documentation</a> on the &quot;scripts&quot; <tt class=" ">package.json</tt> field.    </p>
+    <p>
+For example, to launch the foo module:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">  </code><code class="string">&quot;scripts&quot;</code><code class="plain">: { </code><code class="string">&quot;start&quot;</code><code class="plain">: </code><code class="string">&quot;foo&quot;</code><code class="plain"> }</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    </div>
+    <div class="section section-2 " id="43299038_ArrowNPMConfiguration-version">
+        <h2 class="heading "><span>version</span></h2>
+    <p>
+Version of the application. Used to version the application.    </p>
+    <p>
+By default, this field is set to <tt class=" ">1.0.0</tt>:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">  </code><code class="string">&quot;version&quot;</code><code class="plain">: </code><code class="string">&quot;1.0.0&quot;</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    </div>
+        </div><a id="editButton" href="https://wiki.appcelerator.org/pages/editpage.action?pageId=43299038"><span>Edit</span></a>
+    
+        <div class="footer">
+            Created with <a href="http://k15t.com/display/web/Scroll-Wiki-EclipseHelp-Exporter-for-Confluence" target="_blank">Scroll EclipseHelp Exporter for Confluence</a>.
+        </div>
+    </div>
+</body>
+</html>

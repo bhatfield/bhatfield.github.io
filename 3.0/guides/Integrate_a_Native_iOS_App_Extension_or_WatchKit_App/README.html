@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Integrate a Native iOS App Extension or WatchKit App</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta content="Scroll EclipseHelp Exporter" name="generator"/>
+
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" media="print"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header"/>
+
+        <div id="43301277" class="content">
+            <h1>Integrate a Native iOS App Extension or WatchKit App</h1>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-Introduction">Introduction</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-Prerequisites">Prerequisites</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-CreateaNativeAppExtension">Create a Native App Extension</a>    </p>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-CreateanApplicationExtensionorWatchKitAppTarget">Create an Application Extension or WatchKit App Target</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-VerifyTargetSettings">Verify Target Settings</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-ProvisionanAppGroup">Provision an App Group</a>    </p>
+</li></ul></li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-SetuptheTitaniumApplication">Setup the Titanium Application</a>    </p>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-AddExtensionstotheProject">Add Extensions to the Project</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-AddanAppGroup">Add an App Group</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-AddanEntitlements.plistFile">Add an Entitlements.plist File</a>    </p>
+</li></ul></li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-ShareDataBetweentheApplicationandExtension">Share Data Between the Application and Extension</a>    </p>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-UserDefaults">User Defaults</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-SharedDirectory">Shared Directory</a>    </p>
+</li></ul></li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-RuntheProject">Run the Project</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-PackagetheApplication">Package the Application</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-Troubleshooting">Troubleshooting</a>    </p>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-ProjectIssues">Project Issues</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-SimulatorIssues">Simulator Issues</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-PackageIssues">Package Issues</a>    </p>
+</li></ul></li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-FurtherReading">Further Reading</a>    </p>
+</li></ul>    <div class="section section-2 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-Introduction">
+        <h2 class="heading "><span>Introduction</span></h2>
+    <p>
+This guide covers how to integrate a native app extension or WatchKit app built in Xcode with your Titanium application as well as information about sharing data between the extension and application.  This guide does not cover how to develop an app extension or WatchKit app. Currently, the Titanium SDK supports iOS app extensions and WatchKit apps that are natively built in Xcode.    </p>
+    <p>
+An iOS application extension allows your application to extend its functionality to other iOS applications.  For example, when a document is displayed in the quick look previewer (<tt class=" ">Titanium.UI.iOS.DocumentViewer</tt>) and the user clicks the Share button, your Share or Action app extension appears in the list of options, which the user can select to send or share the data to your application.    </p>
+    <p>
+A WatchKit app is a specialized app extension that runs on the Apple Watch.  The WatchKit app allows the user to access data from your application on their Apple Watch.    </p>
+    </div>
+    <div class="section section-2 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-Prerequisites">
+        <h2 class="heading "><span>Prerequisites</span></h2>
+<ul class=" "><li class=" ">    <p>
+Titanium SDK 4.0 or greater    </p>
+</li><li class=" ">    <p>
+Xcode 6.2 or greater    </p>
+</li><li class=" ">    <p>
+Xcode Command-Line Tools    </p>
+</li></ul>    </div>
+    <div class="section section-2 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-CreateaNativeAppExtension">
+        <h2 class="heading "><span>Create a Native App Extension</span></h2>
+    <p>
+Use Xcode to create a native extension or Apple Watch app that can be integrated with your Titanium project.  After the target is created, you will need to verify or change some settings, provision app group capabilities, then develop your application extension.    </p>
+    <div class="section section-3 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-CreateanApplicationExtensionorWatchKitAppTarget">
+        <h3 class="heading "><span>Create an Application Extension or WatchKit App Target</span></h3>
+    <p>
+To create an application extension, you need to first create an Xcode project, then add your application extension targets.    </p>
+<ol class=" "><li class=" ">    <p>
+Open Xcode.    </p>
+</li><li class=" ">    <p>
+Click <strong class=" ">Create a New Xcode project</strong> or from the menu bar, select <strong class=" ">File</strong> &gt; <strong class=" ">New</strong> &gt; <strong class=" ">Project</strong>.    </p>
+</li><li class=" ">    <p>
+In the template dialog, select <strong class=" ">iOS</strong> &gt; <strong class=" ">Application</strong> &gt; <strong class=" ">Single View Application</strong>, then click<strong class=" "> Next.</strong>    </p>
+</li><li class=" ">    <p>
+Change the <strong class=" ">Product Name</strong> and <strong class=" ">Organization Identifier</strong>, so the <strong class=" ">Bundle Identifier</strong> matches the Titanium App ID.  For example, if you Titanium App ID is <tt class=" ">com.foo.test</tt>, the product name will be <tt class=" ">test</tt> and the organization identifier will be <tt class=" ">com.foo</tt>.  This is not required but will make the subsequent steps easier.    </p>
+</li><li class=" ">    <p>
+Click <strong class=" ">Next</strong>, then <strong class=" ">Create</strong>. The Xcode project will be created.    </p>
+</li><li class=" ">    <p>
+From the menu bar, select <strong class=" ">File</strong> &gt; <strong class=" ">New</strong> &gt; <strong class=" ">Target</strong>.    </p>
+</li><li class=" ">    <p>
+Select either <strong class=" ">iOS</strong> &gt; <strong class=" ">Application Extension</strong>, then the extension you want to create; or <strong class=" ">iOS </strong>&gt; <strong class=" ">Apple Watch </strong>&gt; <strong class=" ">WatchKit App</strong> to create an Apple Watch app.    </p>
+</li><li class=" ">    <p>
+Enter a product name for the extension.  This name will be used to identify the extension to the Titanium application. For WatchKit, the name of the extension will be <strong class=" ">&lt;PROJECT_NAME&gt; WatchKit Extension</strong>.    </p>
+</li><li class=" ">    <p>
+Click<strong class=" "> Next, </strong>then<strong class=" "> Finish.</strong>    </p>
+</li><li class=" ">    <p>
+When prompted to create a scheme, click <strong class=" ">Activate</strong>.    </p>
+</li></ol>    <p>
+A new target will be added to the Xcode project.    </p>
+    </div>
+    <div class="section section-3 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-VerifyTargetSettings">
+        <h3 class="heading "><span>Verify Target Settings</span></h3>
+    <p>
+In order to build the native app extension with a Titanium application, you need to verify or change certain target settings.    </p>
+<ol class=" "><li class=" ">    <p>
+Under <strong class=" ">General</strong> &gt; <strong class=" ">Identity</strong>:    </p>
+<ol class=" "><li class=" ">    <p>
+The <strong class=" ">Bundle Identifier</strong> of the app extension must begin with the Titanium App ID it will be included in. For example, if the ID of the Titanium app is <tt class=" ">com.foo.test </tt>then the bundle ID of the extension may be <tt class=" ">com.foo.test.MyExt</tt>.    </p>
+</li><li class=" ">    <p>
+Select your team from the <strong class=" ">Team</strong> drop-down.  If the <strong class=" ">Fix Issue</strong> button is present, click it to fix any provisioning profile issues.    </p>
+</li></ol></li><li class=" ">    <p>
+Under <strong class=" ">Build Settings</strong> &gt; <strong class=" ">Packaging</strong>, the <strong class=" ">Product Name</strong> of the app extension must be <strong class=" ">$(TARGET_NAME)</strong>.    </p>
+</li><li class=" ">    <p>
+Under <strong class=" ">Build Settings</strong> &gt; <strong class=" ">Code Signing</strong>, the <strong class=" ">Code Signing Identity</strong> must be the same identity used to sign the Titanium application.    </p>
+</li></ol>    <p>
+For WatchKit, you need to verify both the WatchKit extension and the WatchKit app.  If you change the Bundle Identifier in the WatchKit app, you will also need to update:    </p>
+<ol class=" "><li class=" ">    <p>
+In the WatchKit App&apos;s <tt class=" ">Supporting Files/Info.plist</tt> file, change the <strong class=" ">WKCompanionAppBundleIdentifier</strong> to the Titanium App ID.    </p>
+</li><li class=" ">    <p>
+In the WatchKit Extension&apos;s <tt class=" ">Supporting Files/Info.plist</tt> file, change the <strong class=" ">NSExtension</strong> &gt; <strong class=" ">NSExtensionAttributes</strong> &gt; <strong class=" ">WKAppBundleIdentifier</strong> to the WatchKit App&apos;s Bundle Identifier.    </p>
+</li></ol>    </div>
+    <div class="section section-3 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-ProvisionanAppGroup">
+        <h3 class="heading "><span>Provision an App Group</span></h3>
+    <p>
+To share information or files between the application and extension, you need to provision an app group.  An app group allows multiple applications to share the same file container and enables inter-process communication.    </p>
+<ol class=" "><li class=" ">    <p>
+In the target settings of the extension, select the <strong class=" ">Capabilities</strong> tab.    </p>
+</li><li class=" ">    <p>
+Turn the <strong class=" ">App Groups</strong> switch to <strong class=" ">ON</strong>.    </p>
+</li><li class=" ">    <p>
+When prompted, select your Development Team, then click <strong class=" ">Choose</strong>.    </p>
+</li><li class=" ">    <p>
+If the <strong class=" ">Fix </strong><strong class=" ">Issues</strong> button appears under the <strong class=" ">App Group</strong> section, click it.    </p>
+</li><li class=" ">    <p>
+Click the <strong class=" ">Add</strong> button to create new app groups or enable existing app groups.    </p>
+</li></ol>    <p>
+        <img src="images/download/attachments/43301277/ProvisionAppGroup.png" alt="images/download/attachments/43301277/ProvisionAppGroup.png" class="confluence-embedded-image confluence-content-image-border"/>
+            </p>
+    <p>
+This procedure automatically creates the entitlements file and App ID for the extension. You will need to generate a provision profile from the App ID to run the extension on a device or to package it.  You will also need to add the app group provisions to the Titanium application, which is described below.    </p>
+    </div>
+    </div>
+    <div class="section section-2 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-SetuptheTitaniumApplication">
+        <h2 class="heading "><span>Setup the Titanium Application</span></h2>
+    <p>
+To use native app extensions with your Titanium application, you need to modify the <tt class=" ">tiapp.xml</tt> to include the extension when building them, provision the App ID to use the same app group(s) as the extension, then add the app group(s) to the <tt class=" ">Entitlements.plist</tt> file.    </p>
+    <div class="section section-3 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-AddExtensionstotheProject">
+        <h3 class="heading "><span>Add Extensions to the Project</span></h3>
+    <p>
+Adding extensions is similar to adding modules using a text editor.    </p>
+<ol class=" "><li class=" ">    <p>
+Open the project&apos;s <tt class=" ">tiapp.xml</tt> file in an editor.    </p>
+</li><li class=" ">    <p>
+Add the <strong class=" "><tt class=" ">&lt;extensions&gt;</tt></strong> tag as a child of the <tt class=" ">&lt;ti:app&gt;</tt> tag.    </p>
+</li><li class=" ">    <p>
+For each app extension, add an <strong class=" "><tt class=" ">&lt;extension&gt;</tt></strong> tag with the <strong class=" "><tt class=" ">projectPath</tt></strong> attribute set to the absolute path to the folder containing the Xcode project and the target folders, and the node text of the tag contains the Target/Product Name of the extension.  For WatchKit, the name of the extension will be <strong class=" ">&lt;XCODE_PROJECT_NAME&gt; WatchKit Extension</strong>.    </p>
+</li></ol>    <p>
+For example, if your Xcode project is located at <tt class=" ">/Users/Shared/Xcode_Projects/MyExt/</tt> and the name of the extension is <tt class=" ">ActionExt</tt>, add the following content to the <tt class=" ">tiapp.xml</tt> file:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">&lt;ti:app&gt;</code></div>
+<div class="line"><code class="plain">    &lt;extensions&gt;</code></div>
+<div class="line"><code class="plain">        &lt;extension projectPath=</code><code class="string">&quot;/Users/Shared/Xcode_Projects/MyExt/&quot;</code><code class="plain">&gt;ActionExt&lt;/extension&gt;</code></div>
+<div class="line"><code class="plain">    &lt;/extensions&gt;</code></div>
+<div class="line"><code class="plain">&lt;/ti:app&gt;</code></div>
+</div>
+</div>    </div>
+    <div class="section section-3 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-AddanAppGroup">
+        <h3 class="heading "><span>Add an App Group</span></h3>
+    <p>
+To add an app group to the application, you must provision the app group capability in the App ID, then add the app group.    </p>
+    <p>
+When creating the App ID, enable the App Group service.    </p>
+    <p>
+Then, you add app groups to the App ID.    </p>
+<ol class=" "><li class=" ">    <p>
+Click the App ID you want to add app groups to.    </p>
+</li><li class=" ">    <p>
+At the bottom of the App ID, click the <strong class=" ">Edit</strong> button.    </p>
+</li><li class=" ">    <p>
+If the App Group service was not previously enabled, enable it.    </p>
+</li><li class=" ">    <p>
+Click the <strong class=" ">Edit</strong> button next to the App Group service.    </p>
+</li><li class=" ">    <p>
+Select the App Groups you want to add, then click <strong class=" ">Continue</strong>.    </p>
+</li><li class=" ">    <p>
+Click <strong class=" ">Assign</strong>.    </p>
+</li></ol>    <p>
+        <img src="images/download/attachments/43301277/AddAppGroup.png" alt="images/download/attachments/43301277/AddAppGroup.png" class="confluence-embedded-image confluence-content-image-border"/>
+            </p>
+    <p>
+Generate or regenerate your provision profile(s).    </p>
+    </div>
+    <div class="section section-3 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-AddanEntitlements.plistFile">
+        <h3 class="heading "><span>Add an Entitlements.plist File</span></h3>
+    <p>
+Create an <tt class=" ">Entitlements.plist</tt> file at the root of the project folder (same level as the <tt class=" ">Resources</tt> folder) or build the project once to generate a default one in the <tt class=" ">build/iphone</tt> folder, then copy it to the root level of the project. In the <tt class=" ">&lt;dict&gt;</tt> element, add the <tt class=" ">com.apple.security.application-groups</tt> key where the value is an array of string values for each app group name.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">&lt;?xml version=</code><code class="string">&quot;1.0&quot;</code><code class="plain"> encoding=</code><code class="string">&quot;UTF-8&quot;</code><code class="plain">?&gt;</code></div>
+<div class="line"><code class="plain">&lt;!DOCTYPE plist PUBLIC </code><code class="string">&quot;-//Apple//DTD PLIST 1.0//EN&quot;</code><code class="plain"> </code><code class="string">&quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;</code><code class="plain">&gt;</code></div>
+<div class="line"><code class="plain">&lt;plist version=</code><code class="string">&quot;1.0&quot;</code><code class="plain">&gt;</code></div>
+<div class="line"><code class="plain">&lt;dict&gt;</code></div>
+<div class="line"><code class="plain">    &lt;key&gt;com.apple.security.application-groups&lt;/key&gt;</code></div>
+<div class="line"><code class="plain">    &lt;array&gt;</code></div>
+<div class="line"><code class="plain">        &lt;string&gt;group.foo.share&lt;/string&gt;</code></div>
+<div class="line"><code class="plain">    &lt;/array&gt;</code></div>
+<div class="line"><code class="plain">&lt;/dict&gt;</code></div>
+<div class="line"><code class="plain">&lt;/plist&gt;</code></div>
+</div>
+</div>    </div>
+    </div>
+    <div class="section section-2 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-ShareDataBetweentheApplicationandExtension">
+        <h2 class="heading "><span>Share Data Between the Application and Extension</span></h2>
+    <p>
+To share data between the Titanium application and the app extension, you need to provision the App Group capability and add the same app group to each App ID and <tt class=" ">Entitlements.plist</tt> file (the Titanium application and app extension) as mentioned previously.    </p>
+    <p>
+Titanium exposes two ways to share data:    </p>
+<ol class=" "><li class=" ">    <p>
+Read and write properties using the <a class="external-link external-link" href="#!/api/Titanium.App.iOS.UserDefaults">Titanium.App.iOS.UserDefaults API</a> for the Titanium application and the <a class="external-link external-link" href="https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSUserDefaults_Class/" target="_blank">NSUserDefaults API</a> for the native app extension    </p>
+</li><li class=" ">    <p>
+Read and write files to a common shared directory (called a &quot;container&quot; in iOS)    </p>
+</li></ol>    <p>
+    </p>
+    <div class="confbox admonition admonition-note aui-message warning shadowed information-macro">
+        
+    <p class="p1">
+The community has developed modules to help exchange information between your extension and Titanium application.  The <a class="external-link external-link" href="https://github.com/benbahrenburg/Ti.Wormhole" target="_blank">Ti.Wormhole module</a>, developed by Titanium Ben Bahrenburg, is an example of this that enables event support.    </p>
+    </div>
+    
+    <div class="section section-3 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-UserDefaults">
+        <h3 class="heading "><span>User Defaults</span></h3>
+    <p>
+User defaults stores user preferences that are accessible by applications that use the same app group.  User defaults works similarly to Ti.App properties except you need to create an instance using the <tt class=" ">Titanium.App.iOS.createUserDefaults()</tt> method and pass the method an object with only the suiteName property set to the app group you want to access.  Once the instance is created, you can read and write properties to it.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var props = Ti.App.iOS.createUserDefaults({</code></div>
+<div class="line"><code class="plain">    suiteName: </code><code class="string">&apos;group.foo.game&apos;</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="plain">var score = props.getInt(</code><code class="string">&apos;score&apos;</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">score += </code><code class="value">50</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">props.setInt(</code><code class="string">&apos;score&apos;</code><code class="plain">, score);</code></div>
+</div>
+</div>    <p>
+In the extension, you can access the properties using the <tt class=" ">NSUserDefaults</tt> class.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">NSUserDefaults *defaultsObject = [[NSUserDefaults alloc] initWithSuiteName:@</code><code class="string">&quot;group.foo.game&quot;</code><code class="plain">];</code></div>
+<div class="line"><code class="plain">NSNumber *score = [NSNumber numberWithDouble:[defaultsObject doubleForKey:@</code><code class="string">&quot;score&quot;</code><code class="plain">]];</code></div>
+<div class="line"><code class="plain">NSLog(@</code><code class="string">&quot;%@&quot;</code><code class="plain">, score);</code></div>
+<div class="line"><code class="plain">[self.label setText:[score stringValue]];</code></div>
+</div>
+</div>    </div>
+    <div class="section section-3 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-SharedDirectory">
+        <h3 class="heading "><span>Shared Directory</span></h3>
+    <p>
+Use the <a class="external-link external-link" href="#!/api/Titanium.Filesystem-method-directoryForSuite">Titanium.Filesystem.directoryForSuite()</a> method to retrieve the shared location where the applications can access files.  Pass the method the app group name.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="comments">// Get the shared container path</code></div>
+<div class="line"><code class="plain">var sharedPath = Ti.Filesystem.directoryForSuite(</code><code class="string">&apos;group.foo.game&apos;</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">&#xA0;</code></div>
+<div class="line"><code class="comments">// Copy a file from the application to the shared container</code></div>
+<div class="line"><code class="plain">var appFile = Ti.Filesystem.getFile(Ti.Filesystem.applicationDataDirectory, </code><code class="string">&apos;reward.txt&apos;</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">var sharedFile = Ti.Filesystem.getFile(sharedPath, </code><code class="string">&apos;reward.txt&apos;</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">sharedFile.createFile();</code></div>
+<div class="line"><code class="plain">sharedFile.write(appFile.read());</code></div>
+<div class="line"><code class="plain">&#xA0;</code></div>
+<div class="line"><code class="comments">// Create a database accessible in the shared container</code></div>
+<div class="line"><code class="plain">var db = Ti.Database.open(sharedPath + </code><code class="string">&apos;history&apos;</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">db.close();</code></div>
+</div>
+</div>    <p>
+In the extension, to retrieve an NSURL of the share location, use the <a class="external-link external-link" href="https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/Foundation/Classes/NSFileManager_Class/index.html#//apple_ref/occ/instm/NSFileManager/containerURLForSecurityApplicationGroupIdentifier:" target="_blank">[NSFileManager containerURLForSecurityApplicationGroupIdentifier:]</a> method.    </p>
+    </div>
+    </div>
+    <div class="section section-2 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-RuntheProject">
+        <h2 class="heading "><span>Run the Project</span></h2>
+    <p>
+To run the project, just build and launch the project like you would any other Titanium project.  For Studio, use the run command from the launch options toolbar, and for the CLI, exectue <tt class=" ">appc run -p ios</tt> with the additional build options.    </p>
+    <div class="confbox admonition admonition-note aui-message warning shadowed information-macro">
+        
+    <p>
+For each App ID that Xcode creates for the each extension, you need to generate a provision profile. Alternatively, you can use a wildcard App ID that enables the App Group capability. To generate provision profiles for development builds, see <a class="document-link " href="#!/guide/Deploying_to_iOS_devices">Deploying to iOS devices</a>.    </p>
+    </div>
+    
+    <p>
+For the WatchKit app, the Appcelerator CLI and Studio currently do not launch the WatchKit app in the simulator.  After the Titanium application launches, you need to manually run the following command from the terminal to launch the WatchKit app:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">xcrun simctl launch booted &lt;WATCHKIT_APP_BUNDLE_IDENTIFIER&gt;</code></div>
+<div class="line"><code class="plain">&#xA0;</code></div>
+<div class="line"><code class="plain">## Example</code></div>
+<div class="line"><code class="plain">xcrun simctl launch booted com.foo.extension.watchkitapp</code></div>
+</div>
+</div>    <p>
+If you get a black screen after the loading screen in the Watch simulator but did not get an error when executing the command, try re-running the <tt class=" ">xcrun</tt> command.  You may also get a black screen on the iOS simulator after the command executes.  Go back to the Home screen and relaunch the application.    </p>
+    </div>
+    <div class="section section-2 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-PackagetheApplication">
+        <h2 class="heading "><span>Package the Application</span></h2>
+    <p>
+To package the application with the extension, just package the project like you would any other Titanium application.  For Studio, use the package command from the launch options toolbar, and for the CLI, execute <tt class=" ">appc run</tt> command with the package options.    </p>
+    <div class="confbox admonition admonition-note aui-message warning shadowed information-macro">
+        
+    <p>
+For each App ID that Xcode creates for each extension, you need to generate a provision profile. Alternatively, you can use a wildcard App ID that enables the App Group capability. To generate provision profiles for production builds, see <a class="document-link " href="#!/guide/Distributing_iOS_apps">Distributing iOS apps</a>.    </p>
+    </div>
+    
+    <p>
+For WatchKit apps, you need to perform some additional steps:    </p>
+<ol class=" "><li class=" ">    <p>
+Build the Titanium app for the App Store.    </p>
+</li><li class=" ">    <p>
+In the Xcode Organizer, right- or control-click on the <strong class=" ">Archive</strong> and click <strong class=" ">Show in Finder.</strong>    </p>
+</li><li class=" ">    <p>
+In the Finder, right- or control-click on the <tt class=" ">.xcarchive</tt> file and click <strong class=" ">Show Package Contents</strong>.    </p>
+</li><li class=" ">    <p>
+Download and unzip the <tt class=" ">WatchKitSupport.zip</tt> file and add it to your <tt class=" ">.xcarchive</tt> as seen here:<br/>        <img src="images/jira.appcelerator.org/secure/attachment/54973/54973_ScreenshotFiles.png" alt="images/jira.appcelerator.org/secure/attachment/54973/54973_ScreenshotFiles.png" class="confluence-embedded-image confluence-external-resource"/>
+        </p>
+</li><li class=" ">    <p>
+Submit the archive to the App Store.    </p>
+</li></ol>    </div>
+    <div class="section section-2 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-Troubleshooting">
+        <h2 class="heading "><span>Troubleshooting</span></h2>
+    <div class="section section-3 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-ProjectIssues">
+        <h3 class="heading "><span>Project Issues</span></h3>
+<ul class=" "><li class=" ">    <p>
+Build the targets in Xcode to make sure the extension or WatchKit app works correctly.    </p>
+</li><li class=" ">    <p>
+If you have multiple versions of Xcode, verify that <tt class=" ">xcode-select</tt> references an Xcode with version 6.2 or greater.  Execute <tt class=" ">xcode-select -p</tt> to see which Xcode is being used, then launch it to verify the version.    </p>
+</li><li class=" ">    <p>
+If you encounter the <strong class=" ">SPErrorInValidBundleNoGizmoBinaryMessage</strong> error and changed the Bundle Identifier of the WatchKit app, you also need to update the Info.plist files in the WatchKit app and extension as instructed in <a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-VerifyTargetSettings">Verify Target Settings</a>.    </p>
+</li><li class=" ">    <p>
+If you made changes in the Xcode project and do not see them when running the Titanium project, try cleaning both the extension target (from the Xcode menu bar, select <strong class=" ">Product</strong> &gt; <strong class=" ">Clean</strong>) and the Titanium application (from the Studio menu bar, select <strong class=" ">Project</strong> &gt; <strong class=" ">Clean</strong>), then rebuild the project.    </p>
+</li></ul>    </div>
+    <div class="section section-3 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-SimulatorIssues">
+        <h3 class="heading "><span>Simulator Issues</span></h3>
+<ul class=" "><li class=" ">    <p>
+If you see a black screen in the Watch simulator, execute (or re-execute) the <tt class=" ">xcrun</tt> command as instructed in <a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-RuntheProject">Run the Project</a>.  Also verify that your WatchKit app builds and runs correctly from Xcode.    </p>
+</li><li class=" ">    <p>
+If you see a black screen in the iOS simulator after executing the <tt class=" ">xcrun</tt> command, go back the to Home screen and relaunch the application.    </p>
+</li><li class=" ">    <p>
+Try resetting the iOS simulator. From the menu bar, select <strong class=" ">iOS Simulator</strong> &gt; <strong class=" ">Reset Contents and Settings...</strong>.    </p>
+</li></ul>    </div>
+    <div class="section section-3 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-PackageIssues">
+        <h3 class="heading "><span>Package Issues</span></h3>
+<ul class=" "><li class=" ">    <p>
+If you get validation errors regarding an &quot;Invalid Binary&quot; when submitting the package to the iTunes App Store, make sure you copy the unzipped WatchKitSupport folder to your project archive as instructed in <a class="document-link " href="#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App-section-43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-PackagetheApplication">Package the Application</a>.    </p>
+</li></ul>    </div>
+    </div>
+    <div class="section section-2 " id="43301277_IntegrateaNativeiOSAppExtensionorWatchKitApp-FurtherReading">
+        <h2 class="heading "><span>Further Reading</span></h2>
+    <p>
+<a class="external-link external-link" href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/" target="_blank">iOS Developer Library: App Extension Programming Guide</a>    </p>
+    <p>
+<a class="external-link external-link" href="https://developer.apple.com/library/ios/documentation/General/Conceptual/WatchKitProgrammingGuide/index.html" target="_blank">iOS Developer Library: Apple Watch Programming Guide</a>    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    </div>
+        </div><a id="editButton" href="https://wiki.appcelerator.org/pages/editpage.action?pageId=43301277"><span>Edit</span></a>
+    
+        <div class="footer">
+            Created with <a href="http://k15t.com/display/web/Scroll-Wiki-EclipseHelp-Exporter-for-Confluence" target="_blank">Scroll EclipseHelp Exporter for Confluence</a>.
+        </div>
+    </div>
+</body>
+</html>

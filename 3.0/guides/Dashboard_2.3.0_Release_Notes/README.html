@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Dashboard 2.3.0 Release Notes</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta content="Scroll EclipseHelp Exporter" name="generator"/>
+
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" media="print"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header"/>
+
+        <div id="43298805" class="content">
+            <h1>Dashboard 2.3.0 Release Notes</h1>
+    <p>
+The 2.3.0 release of Appcelerator Dashboard introduces a new top-level menu that lets you quickly access your ACS and Node.ACS services, a simplified user provisioning workflow and other improvements, as well as many bug fixes.    </p>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Dashboard_2.3.0_Release_Notes-section-43298805_Dashboard2.3.0ReleaseNotes-NewFeaturesandChanges">New Features and Changes</a>    </p>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Dashboard_2.3.0_Release_Notes-section-43298805_Dashboard2.3.0ReleaseNotes-APIsMenu">APIs Menu</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Dashboard_2.3.0_Release_Notes-section-43298805_Dashboard2.3.0ReleaseNotes-APIManagementPage">API Management Page</a>    </p>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Dashboard_2.3.0_Release_Notes-section-43298805_Dashboard2.3.0ReleaseNotes-RemovaloftheCloudMenuItem">Removal of the Cloud Menu Item</a>    </p>
+</li></ul></li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Dashboard_2.3.0_Release_Notes-section-43298805_Dashboard2.3.0ReleaseNotes-OtherImprovements">Other Improvements</a>    </p>
+</li></ul></li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Dashboard_2.3.0_Release_Notes-section-43298805_Dashboard2.3.0ReleaseNotes-BugFixes">Bug Fixes</a>    </p>
+</li></ul>    <div class="section section-2 " id="43298805_Dashboard2.3.0ReleaseNotes-NewFeaturesandChanges">
+        <h2 class="heading "><span>New Features and Changes</span></h2>
+    <div class="section section-3 " id="43298805_Dashboard2.3.0ReleaseNotes-APIsMenu">
+        <h3 class="heading "><span>APIs Menu</span></h3>
+    <p>
+Dashboard 2.3.0 introduces a new top-level <strong class=" ">APIs</strong> menu that lists all ACS and Node.ACS APIs in your organization. ACS services are indicated by &quot;data&quot; in the menu label while Node.ACS services are indicated by &quot;services&quot; in the label, as shown below.    </p>
+    <p>
+        <img src="images/download/attachments/43298805/new_api_menu.png" alt="images/download/attachments/43298805/new_api_menu.png" class="confluence-embedded-image" width="350"/>
+            </p>
+    <p>
+To view a list of APIs in the currently selected organization, select <strong class=" ">All APIs</strong> from the APIs menu. The APIs page lists the total number of APIs in the organization, their type and the date they were created.    </p>
+    <p>
+        <img src="images/download/attachments/43298805/all_apis.png" alt="images/download/attachments/43298805/all_apis.png" class="confluence-embedded-image" width="500"/>
+            </p>
+    <p>
+Each application in the <strong class=" ">Apps</strong> menu has a corresponding item in the <strong class=" ">APIs</strong> menu with the same name. For instance, if you have an application named &quot;ChatApp&quot;, select <strong class=" ">APIs &gt; ChatApp</strong> to manage that application&apos;s service.    </p>
+    </div>
+    <div class="section section-3 " id="43298805_Dashboard2.3.0ReleaseNotes-APIManagementPage">
+        <h3 class="heading "><span>API Management Page</span></h3>
+    <p>
+Selecting an API from the <strong class=" ">APIs</strong> menu, or from the list of all APIs (shown above), opens a page where you can view and manage the API, as shown below. Previously, this functionality was accessed by clicking the &quot;Cloud&quot; menu while viewing an application. The Cloud menu has been removed from Dashboard (see <a class="document-link " href="#!/guide/Dashboard_2.3.0_Release_Notes-section-43298805_Dashboard2.3.0ReleaseNotes-RemovalofCloudMenuItem">Removal of Cloud Menu Item</a>). For details, see <a class="document-link " href="#!/guide/Managing_Arrow_DB_Applications">Managing Arrow DB Applications</a>.    </p>
+    <p>
+        <img src="images/download/attachments/43298805/api_details.png" alt="images/download/attachments/43298805/api_details.png" class="confluence-embedded-image" width="500"/>
+            </p>
+    <div class="section section-4 " id="43298805_Dashboard2.3.0ReleaseNotes-RemovaloftheCloudMenuItem">
+        <h4 class="heading "><span>Removal of the Cloud Menu Item</span></h4>
+    <p>
+In previous Dashboard releases, to view or manage an application&apos;s ACS or Node.ACS service you would first select the application from the Apps menu, and then select Cloud from the secondary navigation.  In Dashboard 2.3.0, the Cloud menu item has been removed. Instead, you can now simply select the API you want to manage from the <strong class=" ">APIs</strong> menu in the top-level navigation, as discussed in <a class="document-link " href="#!/guide/Managing_Arrow_DB_Applications">Managing Arrow DB Applications</a>.    </p>
+    </div>
+    </div>
+    <div class="section section-3 " id="43298805_Dashboard2.3.0ReleaseNotes-OtherImprovements">
+        <h3 class="heading "><span>Other Improvements</span></h3>
+<ul class=" "><li class=" ">    <p class="editable-field inactive">
+Chat messages are now displayed in the same context as the selected chat group, rather than in a separate view.<br/>        <img src="images/download/attachments/43298805/chats.png" alt="images/download/attachments/43298805/chats.png" class="confluence-embedded-image" width="500"/>
+            </p>
+</li><li class=" ">    <p class="gh-header-title">
+Improved error messages for filter operations on ACS data.    </p>
+</li><li class=" ">    <p class="gh-header-title">
+Improved icons for the table/tile view toggle button on the list of Apps.    </p>
+</li></ul>    </div>
+    </div>
+    <div class="section section-2 " id="43298805_Dashboard2.3.0ReleaseNotes-BugFixes">
+        <h2 class="heading "><span>Bug Fixes</span></h2>
+    <p>
+Below is a select list of bugs fixed in the Dashboard 2.3.0 release.    </p>
+    <p>
+    </p>
+    <div class="tablewrap">
+        <table class="confluenceTable">
+        <thead class=" ">    <tr>
+            <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Summary    </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "/><tbody class=" ">    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Fixed issue with Analytics data not appearing for new apps.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Fixed issue with &quot;Load More&quot; button becomes unresponsive if there are no records on the last page    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Fixed pagination issue in Manage Data where Previous button would disappear upon deleting any object from second page    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Geofence miles/meters selector now works as expected    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+App name now appears on pages if the secondary nav bar is not collapsed.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Remove role icons from all manage org pages    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Fixed grammar for Sessions metric on main page    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Fixed console error when exporting table or chart data in Safari Browser    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Fixed issue in with application creator name not appearing in Manage Apps page    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+The button to accept the EULA is now disabled until the EULA is fully loaded.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p class="editable-field inactive">
+Deleting ACS objects now properly refreshes the pagination view    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p class="editable-field inactive">
+Invited users selected during app creation now appear in app team view as selected    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p class="editable-field inactive">
+Filtering push notification logs using regular expressions now works as expected    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Improved performance when searching for an organization in the Orgs menu.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p class="editable-field inactive">
+Fixed issue when editing form prior to save button resetting can leave form in unsubmittable state    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p class="editable-field inactive">
+Appcelerator Field Service demo app can no longer be deleted, as expected.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p class="editable-field inactive">
+Fixed issue with members list showing different users depending on screen height    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p class="editable-field inactive">
+Platforms now appear as expected when viewing all applications in tile view    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p class="gh-header-title">
+Fixed issue with table counts changing while scrolling the page.    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+        </div><a id="editButton" href="https://wiki.appcelerator.org/pages/editpage.action?pageId=43298805"><span>Edit</span></a>
+    
+        <div class="footer">
+            Created with <a href="http://k15t.com/display/web/Scroll-Wiki-EclipseHelp-Exporter-for-Confluence" target="_blank">Scroll EclipseHelp Exporter for Confluence</a>.
+        </div>
+    </div>
+</body>
+</html>

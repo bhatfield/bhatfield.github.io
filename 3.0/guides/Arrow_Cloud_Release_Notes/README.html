@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Arrow Cloud Release Notes</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta content="Scroll EclipseHelp Exporter" name="generator"/>
+
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" media="print"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header"/>
+
+        <div id="43299726" class="content">
+            <h1>Arrow Cloud Release Notes</h1>
+    <div class="section section-2 " id="43299726_ArrowCloudReleaseNotes-ArrowCloud1.1.12-05May2015">
+        <h2 class="heading "><span>Arrow Cloud 1.1.12 - 05 May 2015</span></h2>
+    <p>
+This release of Arrow Cloud includes version 1.0.24 of the CLI and version 1.1.12 of the server.    </p>
+    <p>
+<strong class=" ">Bug Fixes</strong>    </p>
+<ul class=" "><li class=" ">    <p>
+Fixed an issue where specifying an invalid path for the <tt class=" ">main</tt> field in the <tt class=" ">package.json</tt> file would throw an error when trying to run the application.  Now the CLI outputs an error message and will not deploy the application.    </p>
+</li></ul>    </div>
+    <div class="section section-2 " id="43299726_ArrowCloudReleaseNotes-ArrowCloud1.1.11-21April2015">
+        <h2 class="heading "><span>Arrow Cloud 1.1.11 - 21 April 2015</span></h2>
+    <p>
+<strong class=" ">New Features and Improvements</strong>    </p>
+<ul class=" "><li class=" ">    <p>
+Add ability to publish a project from Github to Arrow Cloud.  Use the <tt class=" ">appc cloud publish --git &lt;options&gt;</tt> command.  For details, see the <a class="document-link " href="#!/guide/Arrow_Cloud_Standard_Project-section-43299645_ArrowCloudStandardProject-GithubRepository">Github Repository</a> section.    </p>
+</li><li class=" ">    <p>
+Add support for sticky sessions.  If the application uses more than one server container, user sessions will be bound to the same application instance, allowing all requests to be sent to the same instance.    </p>
+</li><li class=" ">    <p>
+Before republishing the application, Arrow Cloud sends the <tt class=" ">SIGTERM</tt> signal to the currently deployed application to let it shutdown gracefully. If the app does not shutdown in time, Arrow Cloud will kill the application.  Previously, Arrow Cloud would immediately kill the application before republishing.    </p>
+</li></ul>    <p>
+<strong class=" ">Bug Fixes</strong>    </p>
+<ul class=" "><li class=" ">    <p>
+Fixed an issue where setting environment variables did not take affect when the previous publish command failed.    </p>
+</li><li class=" ">    <p>
+Installed missing bzip2 dependecy for Phantom support.    </p>
+</li></ul>    </div>
+    <div class="section section-2 " id="43299726_ArrowCloudReleaseNotes-ArrowCloud1.1.10-23March2015">
+        <h2 class="heading "><span>Arrow Cloud 1.1.10 - 23 March 2015</span></h2>
+    <p>
+This release of Arrow Cloud includes version 1.0.23 of the CLI and version 1.1.10 of the server.    </p>
+    <div class="section section-3 " id="43299726_ArrowCloudReleaseNotes-CLI1.0.23">
+        <h3 class="heading "><span>CLI 1.0.23</span></h3>
+    <p>
+<strong class=" ">Notice of Feature and Behavior Changes</strong>    </p>
+<ul class=" "><li class=" ">    <p>
+Changed the permission of the <tt class=" ">appc cloud config --maxsize</tt> parameter to allow anyone to set the maximum number of servers an application can be deployed to. Previously, only an application admin could set the maximum value.    </p>
+</li></ul>    <p>
+<strong class=" ">New Features and Improvements</strong>    </p>
+<ul class=" "><li class=" ">    <p>
+New <tt class=" ">appc cloud server</tt> command to select the container size to run the application on.    </p>
+</li></ul>    </div>
+    </div>
+    <div class="section section-2 " id="43299726_ArrowCloudReleaseNotes-ArrowCloud1.1.9-05March2015">
+        <h2 class="heading "><span>Arrow Cloud 1.1.9 - 05 March 2015</span></h2>
+    <p>
+This release of Arrow Cloud includes version 1.0.22 of the CLI and version 1.1.9 of the server.    </p>
+    <div class="section section-3 " id="43299726_ArrowCloudReleaseNotes-CLI1.0.22">
+        <h3 class="heading "><span>CLI 1.0.22</span></h3>
+    <p>
+<strong class=" ">Notice of Feature and Behavior Changes</strong>    </p>
+<ul class=" "><li class=" ">    <p>
+The <tt class=" ">appc cloud cname</tt> command has been deprecated in favor of the <tt class=" ">appc cloud domain</tt> command, which can bind an application to an A record in addition to a CNAME record.    </p>
+</li><li class=" ">    <p>
+The <tt class=" ">appc cloud config</tt> <tt class=" ">--autoscale</tt> and <tt class=" ">--setsize</tt> command options have been removed. To enable auto-scaling, use the <tt class=" ">--autoscaleup</tt> and <tt class=" ">--autoscaledown</tt> options. You can no longer set the current number of cloud servers to use with the <tt class=" ">--setsize</tt> option, instead you can set the minium number with the <tt class=" ">--minsize </tt>option.    </p>
+</li></ul>    <p>
+<strong class=" ">New Features and Improvements</strong>    </p>
+<ul class=" "><li class=" ">    <p>
+New <tt class=" ">appc cloud domain</tt> command to bind either a CNAME or A record to an application. This command deprecates the <tt class=" ">appc cloud cname</tt> command, which can only bind a CNAME record to an application.    </p>
+</li><li class=" ">    <p>
+New <tt class=" ">appc cloud config</tt> <tt class=" ">--minsize</tt> command option to set the minimum number of cloud servers the application can use.    </p>
+</li></ul>    </div>
+    <div class="section section-3 " id="43299726_ArrowCloudReleaseNotes-Server1.1.9">
+        <h3 class="heading "><span>Server 1.1.9</span></h3>
+    <p>
+<strong class=" ">New Features and Improvements</strong>    </p>
+<ul class=" "><li class=" ">    <p>
+Support for wildcard subdomain routing.    </p>
+</li><li class=" ">    <p>
+Support for binding the application to an A record in addition to a CNAME record.    </p>
+</li><li class=" ">    <p>
+Add support for <a class="external-link external-link" href="https://github.com/expressjs/body-parser" target="_blank">body-parser middleware</a>, which makes the body of an HTTP request available as <tt class=" ">req.body</tt> in the controller of an MVC application. To enable the body-parser middleware, add the following line to the <tt class=" ">package.json</tt> file:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="string">&quot;bodyParser&quot;</code><code class="plain">: </code><code class="keyword">true</code></div>
+</div>
+</div></li></ul>    <p class="prettyprint prettyprinted">
+For legacy releases, see <a class="external-link external-link" href="/arrowdb/latest/#!/guide/node_releasenotes">http://docs.appcelerator.com/cloud/latest/#!/guide/node_releasenotes</a>.    </p>
+    <p>
+    </p>
+    </div>
+    </div>
+        </div><a id="editButton" href="https://wiki.appcelerator.org/pages/editpage.action?pageId=43299726"><span>Edit</span></a>
+    
+        <div class="footer">
+            Created with <a href="http://k15t.com/display/web/Scroll-Wiki-EclipseHelp-Exporter-for-Confluence" target="_blank">Scroll EclipseHelp Exporter for Confluence</a>.
+        </div>
+    </div>
+</body>
+</html>

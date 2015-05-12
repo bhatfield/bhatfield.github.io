@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Arrow Cloud Logger API</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta content="Scroll EclipseHelp Exporter" name="generator"/>
+
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" media="print"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header"/>
+
+        <div id="43299993" class="content">
+            <h1>Arrow Cloud Logger API</h1>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Cloud_Logger_API-section-43299993_ArrowCloudLoggerAPI-LoggerAPI">Logger API</a>    </p>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Cloud_Logger_API-section-43299993_ArrowCloudLoggerAPI-Usage">Usage</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Cloud_Logger_API-section-43299993_ArrowCloudLoggerAPI-SpecifyingApplicationLogLevel">Specifying Application Log Level</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Cloud_Logger_API-section-43299993_ArrowCloudLoggerAPI-LoggingMethods">Logging Methods</a>    </p>
+</li></ul></li></ul>    <div class="section section-2 " id="43299993_ArrowCloudLoggerAPI-LoggerAPI">
+        <h2 class="heading "><span>Logger API</span></h2>
+    <p>
+The <tt class=" ">logger</tt> class lets you add custom messages to the application log, in addition to the ones generated automatically by Arrow Cloud. For published applications, custom log messages appear in the output of the <tt class=" ">loglist</tt> and <tt class=" ">logcat</tt> commands. When running your application locally (via the <tt class=" ">appc cloud run</tt> command, they are displayed in the local console.    </p>
+    <div class="confbox admonition admonition-note aui-message warning shadowed information-macro">
+        
+    <p>
+In productions, you may want to minimize output logs to improve application performance and reduce memory consumption.    </p>
+    </div>
+    
+    <div class="section section-3 " id="43299993_ArrowCloudLoggerAPI-Usage">
+        <h3 class="heading "><span>Usage</span></h3>
+    <p>
+First, require the <tt class=" ">logger</tt> class:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var logger = require(</code><code class="string">&apos;acs&apos;</code><code class="plain">).logger;</code></div>
+</div>
+</div>    <p>
+Set the desired <a class="external-link external-link" href="/arrowdb/latest/#!/guide/node_logging-section-specifying-application-log-level">log level</a> by calling the <tt class=" ">setLevel()</tt> method:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">logger.setLevel(</code><code class="string">&apos;ALL&apos;</code><code class="plain">);</code></div>
+</div>
+</div>    <p>
+Call one of the <a class="external-link external-link" href="/arrowdb/latest/#!/guide/node_logging-section-logging-methods">logging methods</a>:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="comments">// Initializing MVC app</code></div>
+<div class="line"><code class="plain">function start(app, express) {</code></div>
+<div class="line"><code class="plain">    logger.info(</code><code class="string">&apos;STARTING APP...&apos;</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">    app.use(express.favicon(__dirname + </code><code class="string">&apos;/public/images/favicon.ico&apos;</code><code class="plain">));</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    <p>
+For published applications, log messages are displayed by the output of the <tt class=" ">appc cloud loglist</tt> and <tt class=" ">appc cloud logcat</tt> commands, for example:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">appc cloud logcat</code></div>
+<div class="line"><code class="value">08</code><code class="plain">/</code><code class="value">19</code><code class="plain">/</code><code class="value">2014</code><code class="plain"> </code><code class="value">11</code><code class="plain">:</code><code class="value">29</code><code class="plain">:</code><code class="value">004.289</code><code class="plain"> [INFO] [</code><code class="value">3279</code><code class="plain">] ------------ Run MVC App ------------</code></div>
+<div class="line"><code class="value">08</code><code class="plain">/</code><code class="value">19</code><code class="plain">/</code><code class="value">2014</code><code class="plain"> </code><code class="value">11</code><code class="plain">:</code><code class="value">29</code><code class="plain">:</code><code class="value">004.573</code><code class="plain"> [INFO] [</code><code class="value">3279</code><code class="plain">] STARTING APP...&#xA0;</code></div>
+</div>
+</div>    <p>
+When running your application locally via the <tt class=" ">acs run</tt> command log messages are displayed in the console.    </p>
+    </div>
+    <div class="section section-3 " id="43299993_ArrowCloudLoggerAPI-SpecifyingApplicationLogLevel">
+        <h3 class="heading "><span>Specifying Application Log Level</span></h3>
+    <p>
+To set the log level, you call <tt class=" ">logger.setLevel()</tt> and pass it one of the following log level strings, in ascending order of log detail:    </p>
+<ul class=" "><li class=" ">    <p>
+<tt class=" ">&quot;OFF&quot;</tt> &amp;mdash; Disables log generation.    </p>
+</li><li class=" ">    <p>
+<tt class=" ">&quot;FATAL&quot;</tt>    </p>
+</li><li class=" ">    <p>
+<tt class=" ">&quot;ERROR&quot;</tt>    </p>
+</li><li class=" ">    <p>
+<tt class=" ">&quot;WARN&quot;</tt>    </p>
+</li><li class=" ">    <p>
+<tt class=" ">&quot;INFO&quot;</tt>    </p>
+</li><li class=" ">    <p>
+<tt class=" ">&quot;DEBUG&quot;</tt>    </p>
+</li><li class=" ">    <p>
+<tt class=" ">&quot;TRACE&quot;</tt>    </p>
+</li><li class=" ">    <p>
+<tt class=" ">&quot;ALL&quot;</tt> &amp;mdash; Includes output from all log methods.    </p>
+</li></ul>    <p>
+The current log level determines which <a class="external-link external-link" href="/arrowdb/latest/#!/guide/node_logging-section-logging-methods">log method</a> output is included in the log output. For example, if you set the log level to <tt class=" ">&quot;WARN&quot;</tt>, only messages logged by <tt class=" ">logger.fatal()</tt>, <tt class=" ">logger.error()</tt>, or <tt class=" ">logger.warn()</tt> methods will be included in the log:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">logger.setLevel(</code><code class="string">&apos;WARN&apos;</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">logger.warn(</code><code class="string">&quot;WARNING...&quot;</code><code class="plain">); </code><code class="comments">// Included in log</code></div>
+<div class="line"><code class="plain">logger.debug(</code><code class="string">&quot;DEBUG...&quot;</code><code class="plain">); </code><code class="comments">// Not included in log</code></div>
+</div>
+</div>    <p>
+To include messages from all log methods, set the log level to <tt class=" ">&quot;ALL&quot;</tt>:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">logger.setLevel(</code><code class="string">&apos;ALL&apos;</code><code class="plain">);</code></div>
+</div>
+</div>    <p>
+To disable log generation entirely, set the log level to <tt class=" ">&quot;OFF&quot;</tt>:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">logger.setLevel(</code><code class="string">&apos;OFF&apos;</code><code class="plain">);</code></div>
+</div>
+</div>    <p>
+The default log level is <tt class=" ">&quot;DEBUG&quot;</tt>, if not specified.    </p>
+    </div>
+    <div class="section section-3 " id="43299993_ArrowCloudLoggerAPI-LoggingMethods">
+        <h3 class="heading "><span>Logging Methods</span></h3>
+    <p>
+To log a message, call one of the following methods, passing it the string to output. The <a class="external-link external-link" href="/arrowdb/latest/#!/guide/node_logging-section-specifying-application-log-level">logging level</a> must be set to an appropriate level.    </p>
+<ul class=" "><li class=" ">    <p>
+<tt class=" ">logger.fatal(&lt;message&gt;)</tt> &amp;mdash; Output only when log level is set to <tt class=" ">&quot;FATAL&quot;</tt> or <tt class=" ">&quot;ALL&quot;</tt>.    </p>
+</li><li class=" ">    <p>
+<tt class=" ">logger.error(&lt;message&gt;)</tt> &amp;mdash; Output only when log level is set to <tt class=" ">&quot;FATAL&quot;</tt>, <tt class=" ">&quot;ERROR&quot;</tt>, or <tt class=" ">&quot;ALL&quot;</tt>.    </p>
+</li><li class=" ">    <p>
+<tt class=" ">logger.warn(&lt;message&gt;)</tt> &amp;mdash; Output only when log level is set to <tt class=" ">&quot;FATAL&quot;</tt>, <tt class=" ">&quot;ERROR&quot;</tt>, <tt class=" ">&quot;WARN&quot;</tt>, or <tt class=" ">&quot;ALL&quot;</tt>.    </p>
+</li><li class=" ">    <p>
+<tt class=" ">logger.info(&lt;message&gt;)</tt> &amp;mdash; Output only when log level is set to <tt class=" ">&quot;FATAL&quot;</tt>, <tt class=" ">&quot;ERROR&quot;</tt>, <tt class=" ">&quot;WARN&quot;</tt>, <tt class=" ">&quot;INFO&quot;</tt>, or <tt class=" ">&quot;ALL&quot;</tt>    </p>
+</li><li class=" ">    <p>
+<tt class=" ">logger.debug(&lt;message&gt;)</tt> &amp;mdash; Output only when log level is set to <tt class=" ">&quot;FATAL&quot;</tt>, <tt class=" ">&quot;ERROR&quot;</tt>, <tt class=" ">&quot;WARN&quot;</tt>, <tt class=" ">&quot;INFO&quot;</tt>, <tt class=" ">&quot;DEBUG&quot;</tt>, or <tt class=" ">&quot;ALL&quot;</tt>.    </p>
+</li><li class=" ">    <p>
+<tt class=" ">logger.trace(&lt;message&gt;)</tt> &amp;mdash; Output only when log level is set to <tt class=" ">&quot;FATAL&quot;</tt>, <tt class=" ">&quot;ERROR&quot;</tt>, <tt class=" ">&quot;WARN&quot;</tt>, <tt class=" ">&quot;INFO&quot;</tt>, <tt class=" ">&quot;DEBUG&quot;</tt>, <tt class=" ">&quot;TRACE&quot;</tt>, or <tt class=" ">&quot;ALL&quot;</tt>.    </p>
+</li></ul>    </div>
+    </div>
+        </div><a id="editButton" href="https://wiki.appcelerator.org/pages/editpage.action?pageId=43299993"><span>Edit</span></a>
+    
+        <div class="footer">
+            Created with <a href="http://k15t.com/display/web/Scroll-Wiki-EclipseHelp-Exporter-for-Confluence" target="_blank">Scroll EclipseHelp Exporter for Confluence</a>.
+        </div>
+    </div>
+</body>
+</html>
