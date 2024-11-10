@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Arrow Web</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta content="Scroll EclipseHelp Exporter" name="generator"/>
+
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" media="print"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header"/>
+
+        <div id="43299023" class="content">
+            <h1>Arrow Web</h1>
+    <p>
+    </p>
+    <div class="confbox admonition admonition-warning aui-message problem shadowed information-macro">
+            <div class="title">Team Subscription Required!</div>
+        
+    <p>
+This Appcelerator Platform feature requires a Team Subscription.    </p>
+    </div>
+    
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Web-section-43299023_ArrowWeb-Introduction">Introduction</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Web-section-43299023_ArrowWeb-RouteDefinition">Route Definition</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Web-section-43299023_ArrowWeb-RendererEngines">Renderer Engines</a>    </p>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Web-section-43299023_ArrowWeb-Pre-BuiltRendererEngines">Pre-Built Renderer Engines</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Web-section-43299023_ArrowWeb-CustomRendererEngines">Custom Renderer Engines</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Web-section-43299023_ArrowWeb-HandlebarsPartialsandHelpers">Handlebars Partials and Helpers</a>    </p>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Web-section-43299023_ArrowWeb-Helpers">Helpers</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Web-section-43299023_ArrowWeb-Partials">Partials</a>    </p>
+</li></ul></li></ul></li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Web-section-43299023_ArrowWeb-Example">Example</a>    </p>
+</li></ul>    <div class="section section-2 " id="43299023_ArrowWeb-Introduction">
+        <h2 class="heading "><span>Introduction</span></h2>
+    <p>
+This guide covers the basics for creating Arrow Web interfaces.  An Arrow Web interface is a custom endpoint that renders HTML content to a client application.  An Arrow Web interface is made up of:    </p>
+<ul class=" "><li class=" ">    <p>
+assets (images, CSS, HTML and JavaScript files) located in the <tt class=" ">web/public</tt> folder    </p>
+</li><li class=" ">    <p>
+templates (EJS, Handelbars, Markdown or ReactJS) located in the <tt class=" ">web/views</tt> folder    </p>
+</li><li class=" ">    <p>
+Arrow Routes (endpoint definitions) located in the <tt class=" ">web/routes</tt> folder    </p>
+</li></ul>    <p>
+You can create custom logic in your Arrow Routes, which can internally access your application's models and APIs.    </p>
+    </div>
+    <div class="section section-2 " id="43299023_ArrowWeb-RouteDefinition">
+        <h2 class="heading "><span>Route Definition</span></h2>
+    <p>
+Place all Arrow Route definition files in the project's <tt class=" ">web/routes</tt> folder.  You can only declare one endpoint definition per file.  An Arrow Route definition file is a JavaScript file, which:    </p>
+<ol class=" "><li class=" ">    <p>
+Loads the <tt class=" ">arrow</tt> module    </p>
+</li><li class=" ">    <p>
+Calls the module's <tt class=" ">Router.extend()</tt> method, passing in an object defining the API endpoint and logic    </p>
+</li><li class=" ">    <p>
+Exports the defined endpoint using the <tt class=" ">module.exports</tt> variable    </p>
+</li></ol>    <p>
+Set the following keys in the object passed to the <tt class=" ">Router.extend()</tt> method to define the API endpoint:    </p>
+    <div class="tablewrap">
+        <table class="confluenceTable">
+        <thead class=" ">    <tr>
+            <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Name    </p>
+            </td>
+                <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Required    </p>
+            </td>
+                <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Description    </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "/><tbody class=" ">    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+name    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+true    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+The name of your route.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+path    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+true    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+The endpoint/path for your route    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+method    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+true    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+HTTP verb (&lsquo;GET&rsquo;, &lsquo;POST&rsquo;, &lsquo;PUT&rsquo;, or &lsquo;DELETE&rsquo;).    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+description    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+true    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+A description for your route. This is used for documentation purposes.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+action    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+true    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Function that allows you to interact with Arrow APIs and Models and send data to your template engine. The function is passed a request, response and next callback. Call the response object's <a class="external-link external-link" href="http://expressjs.com/4x/api.html#res.render" target="_blank"><tt class=" ">render()</tt> </a> method to send HTML back to the client, then call the next callback.    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-2 " id="43299023_ArrowWeb-RendererEngines">
+        <h2 class="heading "><span>Renderer Engines</span></h2>
+    <p>
+A renderer engine renders data (or locals in the Express framework) to the view (template file).  Arrow provide a few renderer engines and allows you to add your own custom renderer engines.    </p>
+    <div class="section section-3 " id="43299023_ArrowWeb-Pre-BuiltRendererEngines">
+        <h3 class="heading "><span>Pre-Built Renderer Engines</span></h3>
+    <p>
+Arrow Web supports the EJS, Handlebars, Markdown and ReactJS renderer engines.  Place all template files with the appropriate extension in the <tt class=" ">web/templates</tt> folder.    </p>
+    <div class="tablewrap">
+        <table class="confluenceTable">
+        <thead class=" ">    <tr>
+            <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Renderer Engine    </p>
+            </td>
+                <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+File Extension    </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "/><tbody class=" ">    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+EJS    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+.ejs    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Handlebars    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+.hbs    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Markdown    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+.md    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+ReactJS    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+.jsx    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    <p>
+To use a template in the Arrow Route's logic, reference its filename without the extension.  Because the template is referenced using the filename, you cannot have the same filename with multiple extensions.    </p>
+    </div>
+    <div class="section section-3 " id="43299023_ArrowWeb-CustomRendererEngines">
+        <h3 class="heading "><span>Custom Renderer Engines</span></h3>
+    <p>
+To create a custom renderer engine you need to create an renderer engine and register it with the Arrow instance's middleware instance.    </p>
+<ol class=" "><li class=" ">    <p>
+Create an object that implements the <tt class=" ">createRenderer()</tt> method and specifies the <tt class=" ">extension</tt> property.    </p>
+</li><li class=" ">    <p>
+Pass the object to the Middleware instance's <tt class=" ">registerRendererEngine()</tt> method.  You can retrieve a Middleware instance by using the <tt class=" ">middleware</tt> property of the Arrow instance.    </p>
+</li></ol>    <p>
+For example, to implement a renderer engine for Jade templates:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var jade = require(</code><code class="string">'jade'</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    engine = {};</code></div>
+<div class="line"><code class="plain">engine.jade = jade;</code></div>
+<div class="line"><code class="plain">engine.createRenderer = function (content, filename, app) {</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">return</code><code class="plain"> function(filename, opts, callback) {</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">if</code><code class="plain"> (!content) {</code></div>
+<div class="line"><code class="plain">            content = require(</code><code class="string">'fs'</code><code class="plain">).readFileSync(filename, </code><code class="string">'utf8'</code><code class="plain">).toString();</code></div>
+<div class="line"><code class="plain">        }</code></div>
+<div class="line"><code class="plain">        callback(</code><code class="keyword">null</code><code class="plain">, jade.render(content, opts));</code></div>
+<div class="line"><code class="plain">    }</code></div>
+<div class="line"><code class="plain">};</code></div>
+<div class="line"><code class="plain">engine.extension = </code><code class="string">'jade'</code><code class="plain">;</code></div>
+<div class="line"><code class="comments">// server is an Arrow instance</code></div>
+<div class="line"><code class="plain">server.middleware.registerRendererEngine(engine);</code></div>
+</div>
+</div>    <p>
+    <span style="color: #222222;">
+Any view with a     </span>
+<tt class=" ">jade</tt>    <span style="color: #222222;">
+ extension will be routed to the Jade renderer engine.    </span>
+    </p>
+    </div>
+    <div class="section section-3 " id="43299023_ArrowWeb-HandlebarsPartialsandHelpers">
+        <h3 class="heading "><span>Handlebars Partials and Helpers</span></h3>
+    <p>
+Arrow exposes some APIs to allow your to register Handlebar partials or helpers.    </p>
+    <div class="section section-4 " id="43299023_ArrowWeb-Helpers">
+        <h4 class="heading "><span>Helpers</span></h4>
+    <p>
+Helpers are functions that you can evaluate in your Handlebar templates.  To use a helper, register the helper with the Handlebar renderer engine, then in the template, call the helper using the name you gave the helper when registering it.    </p>
+<ol class=" "><li class=" ">    <p>
+Get a reference to the Handlebar renderer engine using the <tt class=" ">Arrow.Middleware.getRendererEngine('hbs')</tt> method.    </p>
+</li><li class=" ">    <p>
+Call either the Handlebar renderer engine's <tt class=" ">registerHelper()</tt> to register a helper function.  Pass the method the name of the helper and the function to invoke.    </p>
+</li></ol><div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    hbs = Arrow.Middleware.getRendererEngine(</code><code class="string">'hbs'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">hbs.registerHelper(</code><code class="string">'doFoo'</code><code class="plain">, function(foo) {</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// this.name references the name parameter passed to the template</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// in the render call, that is, res.render('template', {name: 'Joe'});</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">if</code><code class="plain"> (foo) {</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">return</code><code class="plain"> </code><code class="keyword">this</code><code class="plain">.name + </code><code class="string">' is great!'</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">    } </code><code class="keyword">else</code><code class="plain"> {</code></div>
+<div class="line"><code class="plain">        </code><code class="keyword">return</code><code class="plain"> </code><code class="keyword">this</code><code class="plain">.name + </code><code class="string">' is ok.'</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">    }</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="plain"> </code></div>
+<div class="line"><code class="plain"> </code></div>
+</div>
+</div>    <p>
+<strong class=" ">Template Example:</strong>    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">&lt;div&gt;doFoo(</code><code class="keyword">true</code><code class="plain">)&lt;/div&gt;</code></div>
+<div class="line"><code class="plain">&lt;div&gt;doFoo(</code><code class="keyword">false</code><code class="plain">)&lt;/div&gt;</code></div>
+</div>
+</div>    <p>
+    </p>
+    </div>
+    <div class="section section-4 " id="43299023_ArrowWeb-Partials">
+        <h4 class="heading "><span>Partials</span></h4>
+    <p>
+Partials are subviews that you can embed in a template.  To use a partial, you need to register it with the Handlebar renderer engine, then reference the partial in the template using the <tt class=" ">{{&gt; partialName}}</tt> syntax, where <tt class=" ">partialName</tt> is the name you gave the partial when you registered it.    </p>
+<ol class=" "><li class=" ">    <p>
+Get a reference to the Handlebar renderer engine using the <tt class=" ">Arrow.Middleware.getRendererEngine('hbs')</tt> method.    </p>
+</li><li class=" ">    <p>
+Call either the Handlebar renderer engine's <tt class=" ">registerPartial()</tt> to register a partial file.  Pass the method the name of the partial and the template file to use as a partial.    </p>
+</li></ol><div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    hbs = Arrow.Middleware.getRendererEngine(</code><code class="string">'hbs'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">hbs.registerPartial(</code><code class="string">'fooView'</code><code class="plain">, </code><code class="string">'web/views/foo.hbs'</code><code class="plain">);</code></div>
+</div>
+</div>    <p>
+<strong class=" ">Template Example:</strong>    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">&lt;!-- Partial web/views/foo.hbs --&gt;</code></div>
+<div class="line"><code class="plain">&lt;!-- id and name are passed as data to the res.render() method --&gt;</code></div>
+<div class="line"><code class="plain">&lt;a href=</code><code class="string">"/people/{{id}}"</code><code class="plain">&gt;{{name}}&lt;/a&gt;</code></div>
+<div class="line"><code class="plain"> </code></div>
+<div class="line"><code class="plain">&lt;!-- Main Template web/views/main.hbs --&gt;</code></div>
+<div class="line"><code class="plain">&lt;ul&gt;{{#people}}&lt;li&gt;{{&gt; fooView}}&lt;/li&gt;{{/people}}&lt;/ul&gt;</code></div>
+</div>
+</div>    </div>
+    </div>
+    </div>
+    <div class="section section-2 " id="43299023_ArrowWeb-Example">
+        <h2 class="heading "><span>Example</span></h2>
+    <p>
+The following Route file defines an endpoint the client can access using <tt class=" ">GET &lt;SERVER_ADDRESS&gt;/car</tt>.  When accessed, the application retrieves all car models and renders them using the <tt class=" ">web/views/car.hbs</tt> template.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">web/routes/car.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">var TestRoute = Arrow.Router.extend({</code></div>
+<div class="line"><code class="plain">    name: </code><code class="string">'car'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    path: </code><code class="string">'/car'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    method: </code><code class="string">'GET'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    description: </code><code class="string">'get some cars'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    action: function (req, res, next) {</code></div>
+<div class="line"><code class="plain">        req.server.getModel(</code><code class="string">'car'</code><code class="plain">).findAll(function(err, results) {</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">if</code><code class="plain"> (err) {</code></div>
+<div class="line"><code class="plain">                next(err);</code></div>
+<div class="line"><code class="plain">            } </code><code class="keyword">else</code><code class="plain"> {</code></div>
+<div class="line"><code class="plain">                req.logger.info(</code><code class="string">'got cars '</code><code class="plain"> + JSON.stringify(results));</code></div>
+<div class="line"><code class="plain">                res.render(</code><code class="string">'car'</code><code class="plain">, results);</code></div>
+<div class="line"><code class="plain">                next(</code><code class="keyword">null</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">            }</code></div>
+<div class="line"><code class="plain">        });</code></div>
+<div class="line"><code class="plain">    }</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="plain">module.exports = TestRoute;</code></div>
+</div>
+</div><div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">web/views/car.hbs</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">&lt;html&gt;</code></div>
+<div class="line"><code class="plain">&lt;head&gt;</code></div>
+<div class="line"><code class="plain">&lt;/head&gt;</code></div>
+<div class="line"><code class="plain">&lt;body&gt;</code></div>
+<div class="line"><code class="plain">    {{#each cars}}</code></div>
+<div class="line"><code class="plain">        &lt;div&gt;{{make}} {{model}} {{year}}&lt;/div&gt;</code></div>
+<div class="line"><code class="plain">    {{/each}}</code></div>
+<div class="line"><code class="plain">&lt;/body&gt;    </code></div>
+<div class="line"><code class="plain">&lt;/html&gt; </code></div>
+</div>
+</div>    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    </div>
+        </div><a id="editButton" href="https://wiki.appcelerator.org/pages/editpage.action?pageId=43299023"><span>Edit</span></a>
+    
+        <div class="footer">
+            Created with <a href="http://k15t.com/display/web/Scroll-Wiki-EclipseHelp-Exporter-for-Confluence" target="_blank">Scroll EclipseHelp Exporter for Confluence</a>.
+        </div>
+    </div>
+</body>
+</html>

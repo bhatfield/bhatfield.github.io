@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Arrow Models</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta content="Scroll EclipseHelp Exporter" name="generator"/>
+
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" media="print"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header"/>
+
+        <div id="43299044" class="content">
+            <h1>Arrow Models</h1>
+    <p>
+    </p>
+    <div class="confbox admonition admonition-warning aui-message problem shadowed information-macro">
+            <div class="title">Team Subscription Required!</div>
+        
+    <p>
+This Appcelerator Platform feature requires a Team Subscription.    </p>
+    </div>
+    
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Models-section-43299044_ArrowModels-Introduction">Introduction</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Models-section-43299044_ArrowModels-ModelDefinition">Model Definition</a>    </p>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Models-section-43299044_ArrowModels-FieldDefinition">Field Definition</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Models-section-43299044_ArrowModels-ModelSchemaExample">Model Schema Example</a>    </p>
+</li></ul></li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Models-section-43299044_ArrowModels-ModifyanExistingModel">Modify an Existing Model</a>    </p>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Models-section-43299044_ArrowModels-ReduceaModel">Reduce a Model</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Models-section-43299044_ArrowModels-ExtendaModel">Extend a Model</a>    </p>
+</li></ul></li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Models-section-43299044_ArrowModels-CreateaCompositeModel">Create a Composite Model</a>    </p>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Models-section-43299044_ArrowModels-LeftJoinExample">Left Join Example</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Models-section-43299044_ArrowModels-InnerJoinExample">Inner Join Example</a>    </p>
+</li></ul></li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Models-section-43299044_ArrowModels-PredefinedorCustomEndpoints">Predefined or Custom Endpoints</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Arrow_Models-section-43299044_ArrowModels-AccessaModelinArrow">Access a Model in Arrow</a>    </p>
+</li></ul>    <div class="section section-2 " id="43299044_ArrowModels-Introduction">
+        <h2 class="heading "><span>Introduction</span></h2>
+    <p>
+This guides covers the basics for creating Arrow Models.  Models are data stored in either server memory or a backend service, such as ArrowDB or a MySQL database, using an Arrow Connector.  Models are accessed like standard REST objects using predefined endpoints that Arrow automatically generates by default.  You can either create a model by defining your own schema, use an existing model defined by a connector, modify an existing model by either extending or reducing it, or create a composite model by joining two or more models together.    </p>
+    <p>
+To programmatically create Models, see the <a class="external-link external-link" href="#!/api/Arrow.Model">Arrow.Model API reference</a>.    </p>
+    </div>
+    <div class="section section-2 " id="43299044_ArrowModels-ModelDefinition">
+        <h2 class="heading "><span>Model Definition</span></h2>
+    <p>
+Place all Arrow Model files in the <tt class=" ">models</tt> folder.  You can only declare one model per file.  An Arrow Model file is a JavaScript file, which:    </p>
+<ol class=" "><li class=" ">    <p>
+Loads the <tt class=" ">arrow</tt> module    </p>
+</li><li class=" ">    <p>
+Calls the module's <tt class=" ">createModel('name', schema)</tt> method (or another <tt class=" ">Model</tt> method), passing in the name of the model as the first parameter and an object defining the model schema as the second parameter    </p>
+</li><li class=" ">    <p>
+Exports the defined endpoint using the <tt class=" ">module.exports</tt> variable    </p>
+</li></ol>    <p>
+Set the following keys in the object passed to the <tt class=" ">createModel()</tt> method to define the model:    </p>
+    <div class="tablewrap">
+        <table class="confluenceTable">
+        <thead class=" ">    <tr>
+            <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Name    </p>
+            </td>
+                <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Required    </p>
+            </td>
+                <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Description    </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "/><tbody class=" ">    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+fields    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+true    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+An object that represents the model&rsquo;s schema define as key-value pairs. The key is the name of the field and the value is the <tt class=" ">fields</tt> object. See the next table for details.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+connector    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+true    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Connector to which the model is bound (string). Each model can only have <strong class=" ">one</strong> connector. Connectors are responsible for reading and writing data from/to their data source.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+documented    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+<strong class=" ">Since Release 5.0.0.</strong> Determines whether to generate API documentation (true) or not (false). Default is true.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+metadata    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Used to provide connector specific configuration (e.g., mapping the model to a specific database table for the MySQL connector or defining the join properties).    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+autogen    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Used to determine whether to generate API endpoints directly from the model. The default value is <tt class=" ">true</tt>. If the endpoint is auto-generated, you do not need to create an API endpoint definition.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+actions    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+An array of data operations supported by the model. The valid values are: &lsquo;create&rsquo;, &lsquo;read&rsquo;, &lsquo;update&rsquo;, and &lsquo;delete&rsquo;. By default, all are supported by the model.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+plural    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+A string used as the property name when your API endpoint returns an array. By default, the plural value is the plural of the model name. For example, if your model is named <strong class=" ">car</strong>, the default plural would be <strong class=" ">cars</strong>. Note: this value can be set on an API or a model.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+singular    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+A string used as the property name when your API endpoint returns a single record. By default, the singular value is the name of the model. Note: this value can be set on an API or a model.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+before    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+One or more blocks to be executed before the request. Blocks are referenced by their <tt class=" ">name</tt> property. If you want to execute multiple blocks, you should specify them as an array of block names. If multiple blocks are specified, they are executed in the order specified.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+after    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+One or more blocks to be executed after the request. Blocks are referenced by their <tt class=" ">name</tt> property. If you want to execute multiple blocks, you should specify them as an array of block names. If multiple blocks are specified, they are executed in the order specified.    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    <div class="section section-3 " id="43299044_ArrowModels-FieldDefinition">
+        <h3 class="heading "><span>Field Definition</span></h3>
+    <p>
+The <tt class=" ">fields</tt> property (mentioned above) supports a number of sub-properties as well. The table below outlines these properties.    </p>
+    <div class="tablewrap">
+        <table class="confluenceTable">
+        <thead class=" ">    <tr>
+            <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Name    </p>
+            </td>
+                <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Required    </p>
+            </td>
+                <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Description    </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "/><tbody class=" ">    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+type    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+true    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+The field type (e.g., &lsquo;string&rsquo;). Type can be any valid JavaScript primitive type. Type can be specified as a string (e.g., &lsquo;string&rsquo;) or by the type class (e.g., String).    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+required    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Specifies whether the field is required. The default value is <tt class=" ">false</tt>.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+validator    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+A function or regular expression that validates the value of the field. The function is passed the data to validate and should return either <tt class=" ">null</tt> or <tt class=" ">undefined</tt> if the validation succeeds. Any other return value means the validation failed, and the return value will be used in the exception message. If a regular expression is used, it should evaluate to either true or false.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+name    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Used if the model field name is different than the field name in the connector&rsquo;s model or the underlying data source for the field name. For example, if my model field is <tt class=" ">first_name</tt> and the column in a MySQL database is <tt class=" ">fname</tt>, the value of the <tt class=" ">name</tt> property should be <tt class=" ">'fname'</tt>.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+default    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+The default value for the field.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+description    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+The description of the field (used for API documentation).    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+readonly    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Either <tt class=" ">true</tt> or <tt class=" ">false</tt>. If <tt class=" ">true</tt> the field will be readonly and any attempt to write the field value will fail.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+maxlength    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+The max length of the field (specified as an integer)    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+get    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+A function used to set the value of a property that will be sent to the client. This property is useful if you want to define a custom field where the value is derived.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+set    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+A function used to set the value of a property that will be sent to the connector.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+custom    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+This property should be specified and set to <tt class=" ">true</tt> if you are defining a custom field. A custom field is one that does not exist in the underlying data source for the connector you specified.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+model    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+false    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Model name of the field property. This is either the logical name of a custom model or a connector model name in the form <strong class=" ">connector/model_name</strong> (e.g., appc.mysql/employee)    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    </div>
+    <div class="section section-3 " id="43299044_ArrowModels-ModelSchemaExample">
+        <h3 class="heading "><span>Model Schema Example</span></h3>
+    <p>
+The example below creates the <tt class=" ">car</tt> model with the specified schema.  The car models will be stored in ArrowDB as CustomObjects.  Since the <tt class=" ">autogen</tt> property was not set to <tt class=" ">false</tt>, Arrow automatically generates the pre-define endpoints for the client to access the car models using the <tt class=" ">&lt;SEVER_ADDRESS&gt;/</tt><tt class=" ">api/car</tt> endpoints.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">var car = Arrow.createModel(</code><code class="string">'car'</code><code class="plain">, {</code></div>
+<div class="line"><code class="plain">    fields: {</code></div>
+<div class="line"><code class="plain">        make:{type:String, description:</code><code class="string">'the make of a car '</code><code class="plain">},</code></div>
+<div class="line"><code class="plain">        model:{type:String, description:</code><code class="string">'the model of the car'</code><code class="plain">, required:</code><code class="keyword">true</code><code class="plain">},</code></div>
+<div class="line"><code class="plain">        year: {type:Number, description:</code><code class="string">'year the car was made'</code><code class="plain">, required:</code><code class="keyword">true</code><code class="plain">},</code></div>
+<div class="line"><code class="plain">        bluebook: {type:Number, description:</code><code class="string">'kelly bluebook value of the car'</code><code class="plain">, required:</code><code class="keyword">true</code><code class="plain">},</code></div>
+<div class="line"><code class="plain">        mileage: {type:Number, description:</code><code class="string">'current mileage of the car'</code><code class="plain">, required:</code><code class="keyword">true</code><code class="plain">}</code></div>
+<div class="line"><code class="plain">    },</code></div>
+<div class="line"><code class="plain">    connector: </code><code class="string">'appc.arrowdb'</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="plain">module.exports = car;</code></div>
+</div>
+</div>    </div>
+    </div>
+    <div class="section section-2 " id="43299044_ArrowModels-ModifyanExistingModel">
+        <h2 class="heading "><span>Modify an Existing Model</span></h2>
+    <p>
+Besides creating a fully defined model, you can modify an existing model either by reducing or extending it.    </p>
+    <div class="section section-3 " id="43299044_ArrowModels-ReduceaModel">
+        <h3 class="heading "><span>Reduce a Model</span></h3>
+    <p>
+A reduced model is an existing model where you only use specific fields from it.  To create a reduced model, follow the same procedure when creating a regular model except invoke the module's <tt class=" ">Model.reduce()</tt> method instead of the <tt class=" ">createModel()</tt> method.  Pass the model you want to reduce as the first parameter, the name of the new model as the second parameter, and the new model schema as the last parameter.    </p>
+    <p>
+<strong class=" ">Example</strong>:    </p>
+    <p>
+The Model file below extracts three fields from the <tt class=" ">employee</tt> table of the <tt class=" ">appc.mysql</tt> connector, indicated by the <tt class=" ">appc.mysql/employee</tt> parameter, and renames the fields for the <tt class=" ">baseEmp</tt> model, for example, <tt class=" ">email_address</tt> in the MySQL employee table maps to <tt class=" ">email</tt> in the new model.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">models/baseemp.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">var baseEmp = Arrow.Model.reduce(</code><code class="string">'appc.mysql/employee'</code><code class="plain">,</code><code class="string">'baseEmp'</code><code class="plain">,{</code></div>
+<div class="line"><code class="plain">    fields: {</code></div>
+<div class="line"><code class="plain">        fname: {type:String, description:</code><code class="string">'First name'</code><code class="plain">, required:</code><code class="keyword">true</code><code class="plain">, name:</code><code class="string">'first_name'</code><code class="plain">},</code></div>
+<div class="line"><code class="plain">        lname: {type:String, description:</code><code class="string">'Last name'</code><code class="plain">, required:</code><code class="keyword">true</code><code class="plain">, name:</code><code class="string">'last_name'</code><code class="plain">},</code></div>
+<div class="line"><code class="plain">        email: {type:String, description:</code><code class="string">'Email address'</code><code class="plain">, required:</code><code class="keyword">true</code><code class="plain">, name:</code><code class="string">'email_address'</code><code class="plain">}</code></div>
+<div class="line"><code class="plain">    }</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="plain">module.exports = baseEmp;</code></div>
+</div>
+</div>    </div>
+    <div class="section section-3 " id="43299044_ArrowModels-ExtendaModel">
+        <h3 class="heading "><span>Extend a Model</span></h3>
+    <p>
+An extended model is an existing model where you modify the fields or add more fields.  To create an extended model, follow the same procedure when creating a regular model except invoke the module's <tt class=" ">Model.extend()</tt> method instead of the <tt class=" ">createModel()</tt> method. Pass the model you want to extend as the first parameter, the name of the new model as the second parameter, and the new model schema as the last parameter.    </p>
+    <p>
+<strong class=" ">Example</strong>:    </p>
+    <p>
+The Model below extends the employee model by adding the <tt class=" ">headquarters</tt> field to it.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">models/fullemp.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">var fullEmp = Arrow.Model.extend(</code><code class="string">'employee'</code><code class="plain">,</code><code class="string">'fullEmp'</code><code class="plain">,{</code></div>
+<div class="line"><code class="plain">    fields: {</code></div>
+<div class="line"><code class="plain">        headquarters:{type:Boolean, custom:</code><code class="keyword">true</code><code class="plain">, </code></div>
+<div class="line"><code class="plain">            get:function(val,key,model){</code></div>
+<div class="line"><code class="plain">                </code><code class="keyword">return</code><code class="plain"> model.get(</code><code class="string">'state'</code><code class="plain">) === </code><code class="string">'CA'</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">            }</code></div>
+<div class="line"><code class="plain">        }</code></div>
+<div class="line"><code class="plain">    }</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="plain">module.exports = fullEmp;</code></div>
+</div>
+</div>    </div>
+    </div>
+    <div class="section section-2 " id="43299044_ArrowModels-CreateaCompositeModel">
+        <h2 class="heading "><span>Create a Composite Model</span></h2>
+    <p>
+Composite models allow you to create a single model that is composed of two or more models based on the same or different connectors. Composite models can be joined together via a common set of properties, such as primary keys or foreign keys, or they can have no properties in common at all. The power of composite models is that you can represent multiple data sources and entities as a single API endpoint, which is ideal for many mobile use cases.    </p>
+    <p>
+To create a composite model, follow the same procedure when creating a regular model except the <tt class=" ">connector</tt> property must be set to <tt class=" ">appc.composite</tt>, each field in the definition object must specify the <tt class=" ">model</tt> property to indicate which model the field originates from, and the <tt class=" ">metadata</tt> property must define the join operation to combine the models or leave it undefined to perform no join operations.    </p>
+    <p>
+The composite connector can either perform a left join or inner join:    </p>
+<ul class=" "><li class=" ">    <p>
+left join: all records from the main model are returned regardless if it found a match in the secondary models    </p>
+</li><li class=" ">    <p>
+inner join: only records that match both models are returned    </p>
+</li></ul>    <p>
+The composite connector can also perform either a one-to-one join or one-to-many join:    </p>
+<ul class=" "><li class=" ">    <p>
+one-to-one: only one record from the secondary model matches a record in the main model    </p>
+</li><li class=" ">    <p>
+one-to-many: multiple records from the secondary model can match a record in the main model    </p>
+</li></ul>    <p>
+To define the join operation, set the <tt class=" ">metadata</tt> property to either the <tt class=" ">left_join</tt> key, which takes a object defining the left join, or <tt class=" ">inner_join</tt> key, which takes an array of objects defining the inner join.  Each object in the <tt class=" ">left_join</tt> or <tt class=" ">inner_join</tt> property defines the model to join (<tt class=" ">model</tt> property), key to join (<tt class=" ">join_properties</tt> property) and optionally if the join is one-to-one or one-to-many (<tt class=" ">multiple</tt> property).    </p>
+    <p>
+<strong class=" ">Join Object Definition:</strong>    </p>
+    <div class="tablewrap">
+        <table class="confluenceTable">
+        <thead class=" ">    <tr>
+            <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Key    </p>
+            </td>
+                <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Type    </p>
+            </td>
+                <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Value    </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "/><tbody class=" ">    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+model    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+String    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Name of the model. For left joins, this is the secondary model you want to join with the main model.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+join_properties    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Object    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Collection of key-value pairs that determine the keys in each model to perform the join operation. The key is the property of the model defined in this object and the value is the property to join in another model (or the main model for left joins).    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+multiple    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Boolean    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Determines if the match is one-to-one (false) or one-to-many (true). Default is false.    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    <div class="section section-3 " id="43299044_ArrowModels-LeftJoinExample">
+        <h3 class="heading "><span>Left Join Example</span></h3>
+    <p>
+The example below combines the <tt class=" ">employee</tt> and <tt class=" ">managers</tt> models to create the employee_manager model.  The models are joined based on a match between the managers model's <tt class=" ">employee_id</tt> and the employee model's auto-generated <tt class=" ">id</tt>.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">models/employee_manager.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">var employee_manager = Arrow.createModel(</code><code class="string">'employee_manager'</code><code class="plain">,{</code></div>
+<div class="line"><code class="plain">    fields: {</code></div>
+<div class="line"><code class="plain">        fname: {type:String, description:</code><code class="string">'First name'</code><code class="plain">, model:</code><code class="string">'employee'</code><code class="plain">},</code></div>
+<div class="line"><code class="plain">        manager: {type:String, description:</code><code class="string">'manager of employee'</code><code class="plain">,model:</code><code class="string">'managers'</code><code class="plain">}</code></div>
+<div class="line"><code class="plain">    },</code></div>
+<div class="line"><code class="plain">    connector: </code><code class="string">'appc.composite'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    metadata: {</code></div>
+<div class="line"><code class="plain">        left_join: {</code></div>
+<div class="line"><code class="plain">            model: </code><code class="string">'managers'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">            join_properties: {</code></div>
+<div class="line"><code class="plain">                employee_id: </code><code class="string">'id'</code></div>
+<div class="line"><code class="plain">            }</code></div>
+<div class="line"><code class="plain">        }</code></div>
+<div class="line"><code class="plain">    }</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="plain">module.exports = employee_manager;</code></div>
+</div>
+</div><div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">models/employee.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">var employee = Arrow.Model.reduce(</code><code class="string">'appc.mysql/employee'</code><code class="plain">,</code><code class="string">'employee'</code><code class="plain">,{</code></div>
+<div class="line"><code class="plain">    fields: {</code></div>
+<div class="line"><code class="plain">        fname: {type:String, description:</code><code class="string">'First name'</code><code class="plain">, name:</code><code class="string">'first_name'</code><code class="plain">}</code></div>
+<div class="line"><code class="plain">    },</code></div>
+<div class="line"><code class="plain">    connector: </code><code class="string">'appc.mysql'</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="plain">module.exports = employee;</code></div>
+</div>
+</div><div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">models/managers.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">var managers = Arrow.Model.reduce(</code><code class="string">'appc.mysql/employee_manager'</code><code class="plain">,</code><code class="string">'managers'</code><code class="plain">,{</code></div>
+<div class="line"><code class="plain">    fields: {</code></div>
+<div class="line"><code class="plain">        employee_id: { type: Number, description: </code><code class="string">'Employee ID'</code><code class="plain"> },</code></div>
+<div class="line"><code class="plain">        manager: {type:String, name:</code><code class="string">'manager_name'</code><code class="plain">, description:</code><code class="string">'manager name'</code><code class="plain">}</code></div>
+<div class="line"><code class="plain">    },</code></div>
+<div class="line"><code class="plain">    connector: </code><code class="string">'appc.mysql'</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="plain">module.exports = managers;</code></div>
+</div>
+</div>    </div>
+    <div class="section section-3 " id="43299044_ArrowModels-InnerJoinExample">
+        <h3 class="heading "><span>Inner Join Example</span></h3>
+    <p>
+The example below performs an inner join on the <tt class=" ">employee</tt>, <tt class=" ">employee_manager</tt> and <tt class=" ">employee_habit</tt> models.  Both the <tt class=" ">employee_manager</tt> and <tt class=" ">employee_habit employee_id </tt>properties will try to match the employee<tt class=" "> id</tt> property<tt class=" ">.</tt>    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">);</code></div>
+<div class="line"><code class="comments">// create a model from a mysql table</code></div>
+<div class="line"><code class="plain">var employee_composite = Arrow.createModel(</code><code class="string">'employee_composite'</code><code class="plain">,{</code></div>
+<div class="line"><code class="plain">    fields: {</code></div>
+<div class="line"><code class="plain">        fname: {type: String, description: </code><code class="string">'First name'</code><code class="plain">, model: </code><code class="string">'employee'</code><code class="plain">},</code></div>
+<div class="line"><code class="plain">        manager: {type: String, description: </code><code class="string">'Manager of employee'</code><code class="plain">, model: </code><code class="string">'employee_manager'</code><code class="plain">},</code></div>
+<div class="line"><code class="plain">        habit: {type: String, description: </code><code class="string">'Habit of employee'</code><code class="plain">, model: </code><code class="string">'employee_habit'</code><code class="plain">}</code></div>
+<div class="line"><code class="plain">    },</code></div>
+<div class="line"><code class="plain">    connector: </code><code class="string">'appc.composite'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    metadata: {</code></div>
+<div class="line"><code class="plain">        inner_join: [</code></div>
+<div class="line"><code class="plain">            {</code></div>
+<div class="line"><code class="plain">                model: </code><code class="string">'employee_manager'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">                join_properties: {</code></div>
+<div class="line"><code class="plain">                    employee_id: </code><code class="string">'id'</code></div>
+<div class="line"><code class="plain">                }</code></div>
+<div class="line"><code class="plain">            },</code></div>
+<div class="line"><code class="plain">            {</code></div>
+<div class="line"><code class="plain">                model:</code><code class="string">'employee_habit'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">                multiple:</code><code class="keyword">true</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">                join_properties:{</code></div>
+<div class="line"><code class="plain">                    employee_id:</code><code class="string">'id'</code></div>
+<div class="line"><code class="plain">                }</code></div>
+<div class="line"><code class="plain">            }</code></div>
+<div class="line"><code class="plain">        ]</code></div>
+<div class="line"><code class="plain">    }</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="plain">module.exports = employee_composite;</code></div>
+</div>
+</div>    </div>
+    </div>
+    <div class="section section-2 " id="43299044_ArrowModels-PredefinedorCustomEndpoints">
+        <h2 class="heading "><span>Predefined or Custom Endpoints</span></h2>
+    <p>
+By default, Arrow generates the following API endpoints for models:    </p>
+<ul class=" "><li class=" ">    <p>
+<tt class=" ">GET /api/&lt;model_name&gt;</tt> : Return all objects (the first 1000 records).    </p>
+</li><li class=" ">    <p>
+<tt class=" ">GET /api/&lt;model_name&gt;/query</tt> : Return all objects that satisfy a query.    </p>
+</li><li class=" ">    <p>
+<tt class=" ">GET /api/&lt;model_name&gt;/:id</tt> : Return a specific object by id    </p>
+</li><li class=" ">    <p>
+<tt class=" ">GET /api/&lt;model_name&gt;/distinct</tt> : Find distinct objects    </p>
+</li><li class=" ">    <p>
+<tt class=" ">GET /api/&lt;model_name&gt;/count</tt> : Count objects    </p>
+</li><li class=" ">    <p>
+<tt class=" ">PUT /api/&lt;model_name&gt;/:id</tt> : Update a specific user by id    </p>
+</li><li class=" ">    <p>
+<tt class=" ">PUT /api/&lt;model_name&gt;/findAndModify</tt> : Find and modify an object    </p>
+</li><li class=" ">    <p>
+<tt class=" ">POST /api/&lt;model_name&gt;</tt> : Create a new object    </p>
+</li><li class=" ">    <p>
+<tt class=" ">POST /api/&lt;model_name&gt;/upsert</tt> : Create or update an object    </p>
+</li><li class=" ">    <p>
+<tt class=" ">DELETE /api/&lt;model_name&gt;/:id</tt> : Delete a specific object by id    </p>
+</li><li class=" ">    <p>
+<tt class=" ">DELETE /api/&lt;model_name&gt;</tt> : Delete all objects    </p>
+</li></ul>    <p>
+To disable Arrow from generating these endpoints, set the Model's <tt class=" ">autogen</tt> property to <tt class=" ">false</tt> when defining the model.  You will need to create <a class="document-link " href="#!/guide/Arrow_APIs">Arrow API objects</a> to access the model.    </p>
+    <p>
+<strong class=" ">Example:</strong>    </p>
+    <p>
+The following model disabled generating pre-defined endpoints. An API endpoint needs to be defined to access the model data as shown below.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">modes/employee.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">var employee = createModel(</code><code class="string">'employee'</code><code class="plain">, {</code></div>
+<div class="line"><code class="plain">    fields: {</code></div>
+<div class="line"><code class="plain">        first_name: {type:String, description:</code><code class="string">'First name'</code><code class="plain">, required:</code><code class="keyword">true</code><code class="plain">},</code></div>
+<div class="line"><code class="plain">        last_name: {type:String, description:</code><code class="string">'Last name'</code><code class="plain">, required:</code><code class="keyword">true</code><code class="plain">},</code></div>
+<div class="line"><code class="plain">        email_address: {type:String, description:</code><code class="string">'Email address'</code><code class="plain">, required:</code><code class="keyword">true</code><code class="plain">}</code></div>
+<div class="line"><code class="plain">    },</code></div>
+<div class="line"><code class="plain">    connector: </code><code class="string">'memory'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    autogen: </code><code class="keyword">false</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="plain">module.exports = employee;</code></div>
+</div>
+</div>    <p>
+The example below implements the <tt class=" ">GET /api/&lt;employee&gt;/:id</tt> endpoint that would normally be generated by Arrow.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">apis/employeeFindOne.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">var employeeFindOne = Arrow.API.extend({</code></div>
+<div class="line"><code class="plain">    group: </code><code class="string">'employeeAPIs'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    path: </code><code class="string">'/api/employee/:id'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    method: </code><code class="string">'GET'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    description: </code><code class="string">'This API finds one employee record'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    model: </code><code class="string">'employee'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    parameters: {</code></div>
+<div class="line"><code class="plain">        id: {description: </code><code class="string">'the employee id'</code><code class="plain">}</code></div>
+<div class="line"><code class="plain">    },</code></div>
+<div class="line"><code class="plain">    action: function (req, resp, next) {</code></div>
+<div class="line"><code class="plain">        resp.stream(req.model.find, req.params.id, next);</code></div>
+<div class="line"><code class="plain">    }</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="plain">module.exports = employeeFindOne;</code></div>
+</div>
+</div>    </div>
+    <div class="section section-2 " id="43299044_ArrowModels-AccessaModelinArrow">
+        <h2 class="heading "><span>Access a Model in Arrow</span></h2>
+    <p>
+Any callback in the Arrow application that is passed the <tt class=" ">request</tt> object can access the Arrow Models programmatically.  If the <tt class=" ">actions</tt> property in the model definition is set, some of the methods cannot be invoked.  The <tt class=" ">actions</tt> property restricts which CRUD operations can be invoked on the models.    </p>
+<ol class=" "><li class=" ">    <p>
+Retrieve an instance to Arrow using the <tt class=" ">request.server</tt> property.    </p>
+</li><li class=" ">    <p>
+Retrieve the Arrow Model instance using Arrow's <tt class=" ">getModel('name')</tt> method by passing it the name of the model.    </p>
+</li><li class=" ">    <p>
+Invoke one of the following methods on the Arrow Model instance and pass it a callback function, which is passed an <tt class=" ">error</tt> and <tt class=" ">results</tt> object:    </p>
+<ol class=" "><li class=" ">    <p class="highlight javascript">
+<tt class=" ">create(object, callback)</tt>: Creates a model    </p>
+</li><li class=" ">    <p class="highlight javascript">
+<tt class=" ">query(options, callback)</tt>: Retrieves models specified by the query    </p>
+</li><li class=" ">    <p class="highlight javascript">
+<tt class=" ">findAll(callback)</tt>: Retrieves all models    </p>
+</li><li class=" ">    <p class="highlight javascript">
+<tt class=" ">findOne(id, callback)</tt>: Retrieves the model specified by the id parameter    </p>
+</li><li class=" ">    <p class="highlight javascript">
+<tt class=" ">update(instance, callback)</tt>: Updates the passed model    </p>
+</li><li class=" ">    <p class="highlight javascript">
+<tt class=" ">deleteAll(callback)</tt>: Deletes all models    </p>
+</li><li class=" ">    <p class="highlight javascript">
+<tt class=" ">delete(instance, callback)</tt>: Deletes the passed model    </p>
+</li></ol></li></ol>    <p>
+<strong class=" ">Example</strong>:    </p>
+    <p>
+The Arrow Route example below retrieves all car model.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">web/routes/testroute.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">var TestRoute = Arrow.Router.extend({</code></div>
+<div class="line"><code class="plain">    name: </code><code class="string">'car'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    path: </code><code class="string">'/car'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    method: </code><code class="string">'GET'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    description: </code><code class="string">'get some cars'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    action: function (req, res, next) {</code></div>
+<div class="line"><code class="plain">        var model = req.server.getModel(</code><code class="string">'car'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">        model.findAll(function(err, results){</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">if</code><code class="plain"> (err) {</code></div>
+<div class="line"><code class="plain">                next(err);</code></div>
+<div class="line"><code class="plain">            } </code><code class="keyword">else</code><code class="plain"> {</code></div>
+<div class="line"><code class="plain">                req.log.info(</code><code class="string">'got cars '</code><code class="plain"> + JSON.stringify(results));</code></div>
+<div class="line"><code class="plain">                res.render(</code><code class="string">'car'</code><code class="plain">, {cars:results});</code></div>
+<div class="line"><code class="plain">            }</code></div>
+<div class="line"><code class="plain">        });</code></div>
+<div class="line"><code class="plain">    }</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="plain">module.exports = TestRoute;</code></div>
+</div>
+</div>    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    </div>
+        </div><a id="editButton" href="https://wiki.appcelerator.org/pages/editpage.action?pageId=43299044"><span>Edit</span></a>
+    
+        <div class="footer">
+            Created with <a href="http://k15t.com/display/web/Scroll-Wiki-EclipseHelp-Exporter-for-Confluence" target="_blank">Scroll EclipseHelp Exporter for Confluence</a>.
+        </div>
+    </div>
+</body>
+</html>

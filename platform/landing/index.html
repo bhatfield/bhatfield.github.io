@@ -1,0 +1,506 @@
+<script type="text/javascript">
+
+function toggle2(id, link) {
+  var e = document.getElementById(id);
+
+  if (e.style.display == '') {
+    e.style.display = 'none';
+    link.innerHTML = 'Expand';
+  } else {
+    e.style.display = '';
+    link.innerHTML = 'Collapse';
+  }
+}
+
+</script>
+
+<style type="text/css">
+
+.welcome-page {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Open Sans', Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+
+}
+
+.welcome-page .welcome-block {
+  padding-top: 20px;
+}
+
+.welcome-page .welcome_splash {
+  padding: 0px;
+  float: right;
+}
+
+.welcome-icon {
+  padding: 0px;
+  align: top;
+    height: 65px;
+    width: 65px;
+}
+
+.welcome-page .welcome-block .inner-container {
+  padding: 50px 10px 20px 10px;
+}
+
+.welcome-page .welcome-block .inner-container:before,
+.welcome-page .welcome-block .inner-container:after {
+  display: table;
+  content: "";
+  zoom: 1;
+  *display: inline;
+}
+
+.welcome-page .welcome-block .inner-container:after {
+  clear: both;
+}
+
+.welcome-page .welcome-block .inner-container h1{
+  font-size: 28px !important;
+  font-weight: normal;
+  line-height: 36px;
+  color: black !important;
+}
+
+.welcome-page .welcome-block .inner-container p {
+  color: #666666 !important;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.welcome-page .welcome-block .inner-container img {
+  padding: 0 10px;
+}
+
+.welcome-page .row {
+  width: 100%;
+  zoom: 1;
+  padding-top: 10px;
+}
+
+.welcome-page .row:before, .welcome-page .row:after {
+  display: table;
+  content: "";
+  zoom: 1;
+  *display: inline;
+}
+
+.welcome-page .row:after {
+  clear: both;
+}
+
+.welcome-page .half-pane {
+  float: left;
+  width: 48%;
+}
+
+.welcome-page .one-third-pane {
+  float: left;
+  width: 30%;
+  padding: 0 10px;
+}
+
+.welcome-page .two-thirds-pane {
+  float: left;
+  width: 66%;
+  padding: 0 10px;
+}
+
+.welcome-page h2 {
+  color: #9b1c1f;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.welcome-page p {
+  color: #666666;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.welcome-page a {
+  color: #5D87A1;
+  text-decoration: none;
+  font-size: 14px;
+}
+.welcome-page a:hover {
+  color: blue;
+}
+.welcome-page ul {
+  margin-top: 5px;
+}
+
+.welcome-page li {
+  margin-top: 2px;
+  font-size: 14px;
+}
+
+.welcome-page .update-date {
+  font-weight: bold;
+  margin-top: 7px;
+  margin-bottom: -4px;
+  color: black;
+}
+
+.welcome-page table {
+  width: 100%;
+}
+.welcome-page thead {
+  background-color: #f0f1f1;
+}
+.welcome-page thead th{
+  font-weight: bold;
+  font-size: 14px;
+  padding:0 10px 2px 10px;
+}
+.welcome-page tbody td{
+  padding:0 10px 2px 0px;
+  font-size: 13px;
+  color: #666666;
+  vertical-align: top;
+}
+
+.version-table tr:nth-child(even) {
+    background-color: #F8F8F8;
+}
+
+.version-table td {
+  width: 30%;
+}
+
+/* TIDOC-2381 */
+.version-table td p {
+	padding: 0 0 5px 5px;
+}
+
+.welcome-page .arrow-link {
+  background-image: url(arrow-link.png);
+  background-repeat: no-repeat;
+  background-position: 100% 3px;
+  padding-right: 13px;
+}
+
+.welcome-cell {
+    align: left;
+    padding: 0;
+}
+
+.content-cell {
+    width: 33%;
+}
+
+.content-cell ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.content-cell li {
+    margin: 0;
+    padding: 0 0 5px 0;
+}
+
+
+</style>
+<div class="welcome-page">
+	<div class="row welcome-block">
+  		<h1>Appcelerator Platform</h1>
+
+		<table>
+			<tr>
+				<td>
+			        <p><strong>Welcome to the Appcelerator Platform!</strong></p>
+			        <p>The <strong>Appcelerator Platform</strong> includes SDKs, services and tools for creating, testing,
+			        and managing your mobile and cloud applications.</p>
+	
+					<h2>What's New</h2>
+	        		<p><b>17 November 2015</b> - <a href="http://docs.appcelerator.com/platform/release-notes/?version=5.1.0.GA" target="_blank">SDK 5.1.0 and Studio 4.4.0 GA releases</a></p>
+	        		<p><b>29 October 2015</b> - <a href="http://docs.appcelerator.com/platform/release-notes/?version=5.1.0.Beta" target="_blank">SDK 5.1.0 and Studio 4.4.0 beta releases</a></p>
+	        		<p><b>28 October 2015</b> - <a href="../latest/#!/guide/Dashboard_Release_Notes" target="_top">Dashboard 4.3.1 release</p>  
+	
+					<h2>Get Started</h2>
+					<ul>
+						<li><a target="_top" href="https://platform.appcelerator.com" class="arrow-link">Log on to the Appcelerator Dashboard</a></li>
+						<li><a target="_top" href="../latest/#!/guide/Quick_Start">Get up to speed with the Quick Start Guide</a></li>
+						<li><a target="_top" href="../latest/#!/api">Browse the API Docs</a></li>
+					    <li><a target="_top" href="../latest/#!/guide/Appcelerator_Platform" >Read the Introduction</a></p>
+					</ul>
+	
+	                <p>For JSON files, see <a target="_top" href="../../titanium/data/index.html">JSON File Index</a>.</p>
+	                <p>For pre-release docs, visit
+	                    <a target="_top" href="https://appcelerator.github.io/appc-docs/latest/">https://appcelerator.github.io/appc-docs/latest/</a>.</p>
+				</td>
+				<td>
+					<img src="start-display.png" />
+				</td>
+			</tr>
+		</table>
+
+	</div>
+  
+	<div class="row">
+    	<div class="one-third-pane">
+	      <h2>Documentation Updates</h2>
+	        <p class="update-date">17 November 2015</p>
+	          <p>Posted 5.1.0 release docs.</p>       
+	        <p class="update-date">29 October 2015</p>
+	          <p>Posted 5.1.0 beta docs.</p> 
+	        <p class="update-date">28 October 2015</p>
+	          <p>Posted Dashboard 4.3.1 release notes.</p> 
+	        <p class="update-date">27 October 2015</p>
+	          <p>Posted CLI and Studio release notes.</p>       
+	        <p class="update-date">12 October 2015</p>
+	          <p>Posted CLI 5.0.3 release notes.</p>       
+	        <p class="update-date">01 October 2015</p>
+	          <p>Posted SDK 5.0.2 and Studio 4.3.1 release notes.</p> 
+	        <p class="update-date">25 September 2015</p>
+	          <p>Posted CLI 5.0.2 and SDK 5.0.1 release notes.</p> 
+	        <p class="update-date">18 September 2015</p>
+	          <p>Posted CLI 5.0.1 release notes.</p>       
+	        <p class="update-date">17 September 2015</p>
+	          <p>Posted Dashboard 4.3.0 and Arrow Cloud 1.3.0 release notes.</p> 
+	        <p class="update-date">16 September 2015</p>
+	          <p>Posted 5.0.0 GA docs.</p>  
+	        <p class="update-date">09 September 2015</p>
+	          <p>Posted 5.0.0 RC SDK Release Notes.</p>  
+	        <p class="update-date">09 September 2015</p>
+	          <p>Posted 4.1.1 SDK and 4.1.3 CLI Release Notes.</p>  
+	        <p class="update-date">04 September 2015</p>
+	          <p>Posted 5.0.0 Beta docs.</p>
+	
+	        <div id="content" style="display:none">
+	
+	        <p class="update-date">06 August 2015</p>
+	          <p>Posted Dashboard 4.2.1 release notes.</p>      
+		      <p class="update-date">05 August 2015</p>
+	          <p>Posted Arrow Cloud 1.2.0 docs.</p>
+		      <p class="update-date">31 July 2015</p>
+	          <p>Posted Dashboard 4.2.0 docs.</p>
+		      <p class="update-date">20 July 2015</p>
+	          <p>Posted CLI 4.1.2 and Studio 4.1.1 docs.</p>
+		      <p class="update-date">08 July 2015</p>
+	          <p>Posted CLI, SDK and Studio 4.1.0 GA docs.</p>
+		      <p class="update-date">02 July 2015</p>
+	          <p>Posted 4.1.0 Dashboard docs.</p>
+		      <p class="update-date">26 June 2015</p>
+	          <p>Posted 4.1.0 Beta docs.</p>
+		      <p class="update-date">12 June 2015</p>
+	          <p>Posted Arrow Cloud 1.1.13 and Dashboard 4.0.3 Release Notes.</p>
+		      <p class="update-date">11 June 2015</p>
+	          <p>Posted CLI 4.0.2 and Studio 4.0.1 Release Notes.</p>
+		      <p class="update-date">05 June 2015</p>
+	          <p>Posted Dashboard 4.0.2 Release Notes.</p>
+		      <p class="update-date">29 May 2015</p>
+	          <p>Posted Arrow Builder, CLI and Dashboard 4.0.1 Release Notes.</p>
+		      <p class="update-date">21 May 2015</p>
+	          <p>Posted 4.0.0 GA docs.</p>
+		      <p class="update-date">08 May 2015</p>
+	          <p>Posted <a target="_top" href="../latest/#!/api/Arrow">Arrow API docs</a>.</p>
+		      <p class="update-date">05 May 2015</p>
+	          <p>Posted Arrow Cloud 1.1.12 docs.</p>
+		      <p class="update-date">21 April 2015</p>
+	          <p>Posted Arrow Cloud 1.1.11 docs.</p>
+		      <p class="update-date">17 April 2015</p>
+		      <p>Posted <a target="_top" href="../latest/#!/guide/Arrow_Connectors">Arrow Connector guides</a> and <a target="_top" href="../latest/#!/guide/Integrate_a_Native_iOS_App_Extension_or_WatchKit_App">iOS App Extension and WatchKit guide</a>.</p>
+		      <p class="update-date">02 April 2015</p>
+		      <p>Posted Beta docs. Note that the <a target="_top" href="../latest/#!/api/Modules.Cloud">Cloud</a> and <a target="_top" href="../latest/#!/api/Modules.CloudPush">CloudPush</a> API docs moved from the Titanium to the Modules namespace.</p>
+		      <p class="update-date">27 Feb 2015</p>
+		      <p>Posted <a target="_top" href="../latest/#!/guide/Dashboard_3.0.2_Release_Notes">Dashboard 3.0.2 Release Notes</a>.</p>
+		      <p class="update-date">09 Feb 2015</p>
+		      <p>Posted <a target="_top" href="../latest/#!/guide/Dashboard_3.0.1_Release_Notes">Dashboard 3.0.1 Release Notes</a>.</p>
+		      <p class="update-date">29 Jan 2015</p>
+		      <p>Posted <a target="_top" href="../latest/#!/guide/Dashboard_3.0.0_Release_Notes">Dashboard 3.0.0 Release Notes</a>.</p>
+		      <p class="update-date">7 Jan 2015</p>
+		      <p>Posted <a target="_top" href="../latest/#!/guide/Dashboard_2.3.0_Release_Notes">Dashboard 2.3.0 Release Notes</a>.</p>
+		      <p class="update-date">3 December 2014</p>
+		      <p>Posted <a target="_top" href="../latest/#!/guide/Dashboard_2.2.0_Release_Notes">Dashboard 2.2.0 Release Notes</a>.</p>
+		      <p class="update-date">14 November 2014</p>
+		      <p>Posted <a target="_top" href="../latest/#!/guide/Appcelerator_Platform_2.1.1_Release_Notes">Platform 2.1.1 Release Notes</a>.</p>
+		      <p class="update-date">04 November 2014</p>
+		      <p>Posted <a target="_top" href="../latest/#!/guide/Appcelerator_Platform_2.1.0_Release_Notes_(04_November_2014)">Platform 2.1.0 Release Notes</a>.</p>
+		      <p class="update-date">16 October 2014</p>
+		      <p>Posted <a target="_top" href="../latest/#!/guide/Appcelerator_Platform_2.0.1_Release_Notes_(16_October_2014)">Platform 2.0.1 Release Notes</a>.</p>
+		      <p class="update-date">17 July 2014</p>
+		      <p>Posted <a target="_top" href="../latest/#!/guide/Appcelerator_Platform_Summer_2014_Release_Notes_(17_July_2014)">Platform 2.0.0 Release Notes</a> and doc updates.</p>
+		      <p class="update-date">11 April 2014</p>
+		      <p>Added new documentation for using the <a target="_top" href="../latest/#!/guide/Managing_ACS_data_objects">Manage Data</a> forms to manage your ACS objects and updated the documentation for <a target="_top" href="../latest/#!/guide/Appcelerator_Test" title="">Appcelerator Test</a>.</p>
+		      <p class="update-date">10 March 2014</p>
+		      <p>Posted <a target="_top" href="http://docs.appcelerator.com/platform/release-notes/?version=1.1.2.GA">Platform 1.1.2 release notes</a> and new documentation.</p>
+		      <p class="update-date">20 December 2013</p>
+		      <p>Posted <a href="http://docs.appcelerator.com/platform/release-notes/?version=1.1.1.GA" target="_top">Platform 1.1.1 release notes</a> and updated guides.</p>
+		      <p class="update-date">22 November 2013</p>
+		      <p>Updated <a target="_top" href="../latest/#!/guide/Appcelerator_Dashboard">Appcelerator Dashboard</a>
+		        and <a target="_top" href="../latest/#!/guide/Managing_Organizations">Managing Organizations</a> guides.
+		            </p>
+		      <p class="update-date">08 Oct 2013</p>
+		      <p>Updated <a target="_top" href="../latest/#!/guide/Appcelerator_Dashboard">Appcelerator Dashboard</a>,
+		        <a target="_top" href="../latest/#!/guide/Managing_Organizations">Managing Organizations</a>,
+		        and <a target="_top" href="../latest/#!/guide/Test">Test</a> guides.
+		            </p>
+		      <p class="update-date">18 Sept 2013</p>
+		            <p>Posted 3.1.3 GA release notes and doc update.</p>
+		      <p class="update-date">09 Sept 2013</p>
+		      <p>Added <a target="_top" href="../latest/#!/guide/Appcelerator_Platform_Troubleshooting">Troubleshooting guide</a>.</p>
+		      <p class="update-date">15 August 2013</p>
+		      <p>Posted <a target="_top" href="../latest/#!/guide/Test_Best_Practices">Test Best Practices</a> and 3.1.2 GA docs.</p>
+		      <p class="update-date">02 August 2013</p>
+		      <p>Posted <a target="_top" href="../latest/#!/guide/Integrating_Test_with_Jenkins">Integrating Test with Jenkins guide</a> and 3.1.2 RC docs.</p>
+		      <p class="update-date">19 July 2013</p>
+		            <p>Update enterprise guides and release notes.</p>
+		      <p class="update-date">17 June 2013</p>
+		            <p>Initial Appcelerator Platform documentation.</p>
+	      	</div>
+	     	<a href="#" onclick="toggle2('content', this)">Expand</a>
+    	</div>
+    	<div class="two-thirds-pane">
+      		<h2>Platform component versions - latest stable versions</h2>
+
+			<table class="version-table">
+		    	<thead class=" ">
+			        <tr>
+			            <td class="col_1 confluenceTh" rowspan="1" colspan="1">
+			                <p>Component</p>
+			            </td>
+			            <td class="col_2 confluenceTh" rowspan="1" colspan="1">
+			                <p>Version</p>
+			            </td>
+			            <td class="col_2 confluenceTh" rowspan="1" colspan="1">
+			                <p>Release Date and Notes</p>
+			            </td>
+			        </tr>
+			    </thead>
+		    	<tfoot class=" "></tfoot>
+		    	<tbody class=" ">
+		        	<tr>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p><strong class=" ">Appcelerator Dashboard</strong></p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p>4.3.1</p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			            	<!--<p><a href="http://docs.appcelerator.com/platform/latest/#!/guide/Dashboard_Release_Notes" target="_top" class="document-link">28 October 2015</a></p>-->
+			                <p><a href="../latest/#!/guide/Dashboard_Release_Notes" target="_top" class="document-link">28 October 2015</a></p>
+			            </td>
+			        </tr>
+		        	<tr>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p><strong class=" ">Appcelerator Studio</strong></p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p>4.4.0</p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                 <!--<p><a href="/platform/latest/#!/guide/Studio_Release_Notes/README.html" target="_top" class="external-link external-link" >17 November 2015</a></p>-->
+			                <p><a href="../latest/#!/guide/Studio_Release_Notes" target="_top" class="external-link external-link" >17 November 2015</a></p>
+			            </td>
+			        </tr>
+		        	<tr>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p><strong class=" ">Appcelerator CLI</strong></p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p>5.1.0</p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p><a href="../latest/#!/guide/Appcelerator_CLI_Release_Notes" target="_top" class="external-link external-link">17 November 2015</a></p>
+			            </td>
+			        </tr>
+		        	<tr>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p><strong class=" ">Titanium SDK</strong></p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p>5.1.0</p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			            	<p><a href="../latest/#!/guide/Titanium_SDK_Release_Notes" target="_top" class="external-link external-link">17 November 2015</a></p>
+			                <!--<p><a href="http://docs.appcelerator.com/platform/release-notes/?version=5.1.0.GA" target="_top" class="external-link external-link">17 November 2015</a></p>-->
+			            </td>
+			        </tr>
+		        	<tr>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p><strong class=" ">Arrow Cloud</strong></p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p>1.3.1</p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p><a href="../latest/#!/guide/Arrow_Cloud_Release_Notes" target="_top" class="external-link external-link">14 October 2015</a></p>
+			            </td>
+			        </tr>
+		        	<tr>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p><strong class=" ">ArrowDB and Arrow Push</strong></p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p>1.3.0</p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p><a href="../../arrowdb/latest/#!/guide/releasenotes" target="_top" class="external-link external-link">17 September 2015</a></p>
+			            </td>
+			        </tr>
+		        	<tr>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p><strong class=" ">Appcelerator Platform Services SDK (iOS and Android)</strong></p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p>1.1.6</p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p>27 August 2015</p>
+			            </td>
+			        </tr>
+		        	<tr>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p><strong class=" ">Appcelerator Performance</strong></p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p>1.1.1</p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p>12 January 2015</p>
+			            </td>
+			        </tr>
+		        	<tr>
+			            <td class="confluenceTd" rowspan="3" colspan="1">
+			                <p><strong class=" ">Appcelerator Test</strong></p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p>Service 7732.313</p>
+			            </td>
+			            <td class="confluenceTd" rowspan="3" colspan="1">
+			                <p>21 May 2015</p>
+			                <p><strong>Important:</strong> <a target="_top" class="external-link " href="../latest/#!/guide/Re-enabling_Test_After_Service_Upgrade">You must re-enable Test</a> on previously enabled applications after each Test service update.</p>
+			            </td>
+			        </tr>
+		        	<tr>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p>Studio Plugin 7732.313</p>
+			            </td>
+			        </tr>
+			        <tr>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p>CLI Utility 1.1.3</p>
+			            </td>
+			        </tr>
+			        <tr>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p><strong class=" ">Appcelerator Insights</strong></p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p>2.0.1</p>
+			            </td>
+			            <td class="confluenceTd" rowspan="1" colspan="1">
+			                <p><a href="../latest/#!/guide/Appcelerator_Insights_2.0.1_Release_Notes" target="_top" class="document-link ">16 October 2014</a></p>
+			            </td>
+			        </tr>
+			    </tbody>
+			</table>
+
+	    </div>    
+	</div>
+</div>

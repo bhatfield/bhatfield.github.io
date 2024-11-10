@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Migrating Node.ACS Applications to Arrow</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta content="Scroll EclipseHelp Exporter" name="generator"/>
+
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" media="print"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header"/>
+
+        <div id="43298928" class="content">
+            <h1>Migrating Node.ACS Applications to Arrow</h1>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-Introduction">Introduction</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-CreateanArrowproject">Create an Arrow project</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-package.json">package.json</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-Expressappinstance">Express app instance</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-socket.ioinstance">socket.io instance</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-app.js">app.js</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-config.json">config.json</a>    </p>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-routes">routes</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-filters">filters</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-websockets">websockets</a>    </p>
+</li></ul></li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-controllersfolder">controllers folder</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-filtersfolder">filters folder</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-websocketsfolder">websockets folder</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-publicfolder">public folder</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-viewsfolder">views folder</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-RuntheArrowproject">Run the Arrow project</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-PublishtheArrowproject">Publish the Arrow project</a>    </p>
+</li></ul>    <div class="section section-2 " id="43298928_MigratingNode.ACSApplicationstoArrow-Introduction">
+        <h2 class="heading "><span>Introduction</span></h2>
+    <p>
+This guide describes how to convert your Node.ACS application using the MVC framework to work in the Arrow framework.    </p>
+    <p>
+For details about Arrow, see <a class="document-link " href="#!/guide/Arrow_Builder">Arrow Builder</a>.    </p>
+    </div>
+    <div class="section section-2 " id="43298928_MigratingNode.ACSApplicationstoArrow-CreateanArrowproject">
+        <h2 class="heading "><span>Create an Arrow project</span></h2>
+    <p>
+Before starting, first create an Arrow project by executing the command below in your workspace directory:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">appc </code><code class="keyword">new</code><code class="plain"> -t arrow -n ArrowProject</code></div>
+</div>
+</div>    </div>
+    <div class="section section-2 " id="43298928_MigratingNode.ACSApplicationstoArrow-package.json">
+        <h2 class="heading "><span>package.json</span></h2>
+    <p>
+If you have any special settings or dependencies in your Node.ACS project's <tt class=" ">package.json</tt> file, add them to the same file in your new Arrow project.  Do not overwrite any existing keys.    </p>
+    </div>
+    <div class="section section-2 " id="43298928_MigratingNode.ACSApplicationstoArrow-Expressappinstance">
+        <h2 class="heading "><span>Express app instance</span></h2>
+    <p>
+To access the Express instance in an Arrow project, use the <tt class=" ">app</tt> property of the Arrow instance.  For the API and Route components, an Arrow instance is passed to the <tt class=" ">request</tt> and <tt class=" ">response</tt> objects as the <tt class=" ">server</tt> property.    </p>
+    <div class="confbox admonition admonition-note aui-message warning shadowed information-macro">
+            <div class="title">Express version</div>
+        
+    <p>
+Node.ACS used Express 3.x, while Arrow Builder uses Express 4.x. For details about migrating to Express 4, see <a class="external-link external-link" href="http://expressjs.com/guide/migrating-4.html" target="_blank">http://expressjs.com/guide/migrating-4.html</a>.    </p>
+    </div>
+    
+    <p>
+<strong class=" ">Example:</strong>    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">ArrowProject/app.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    favicon = require(</code><code class="string">'serve-favicon'</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    server = </code><code class="keyword">new</code><code class="plain"> Arrow();</code></div>
+<div class="line"><code class="plain">server.app.use(favicon(__dirname + </code><code class="string">'/web/public/images/favicon.ico'</code><code class="plain">));</code></div>
+</div>
+</div>    </div>
+    <div class="section section-2 " id="43298928_MigratingNode.ACSApplicationstoArrow-socket.ioinstance">
+        <h2 class="heading "><span>socket.io instance</span></h2>
+    <p>
+An Arrow application does not include socket.io by default.  To include socket.io in an Arrow application:    </p>
+<ol class=" "><li class=" ">    <p>
+In the <tt class=" ">package.json</tt> file, add <tt class=" ">socket.io</tt> as a dependency.    </p>
+</li><li class=" ">    <p>
+In the <tt class=" ">app.js</tt>, in the <tt class=" ">started</tt> event listener, load the socket.io module and pass it the server instance (Arrow instance's <tt class=" ">server</tt> property), then make API calls to the socket.io instance.  If you assign the socket.io instance to a property of the Arrow instance, you can access the socket.io instance with that property wherever an Arrow instance is passed to a method.    </p>
+</li><li class=" ">    <p>
+Any client-side code, such as the view templates, will need to <a class="external-link external-link" href="http://socket.io/download/" target="_blank">include the <tt class=" ">socket.io.js</tt> client script</a>.  Note that when the client connects to the socket.io server (Arrow application), you will need to update the URL when switching between testing the project locally or when its published to Arrow Cloud.    </p>
+</li></ol>    <p>
+<strong class=" ">Example:</strong>    </p>
+    <p>
+The following example creates a basic chat application.    </p>
+    <p>
+Add socket.io as a dependency to the Arrow project.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">package.json</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">  ...</code></div>
+<div class="line"><code class="plain">  dependencies: {</code></div>
+<div class="line"><code class="plain">    ...</code></div>
+<div class="line"><code class="plain">    </code><code class="string">'socket.io'</code><code class="plain">: </code><code class="string">'*'</code></div>
+<div class="line"><code class="plain">  }</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    <p>
+Loads the socket.io module and creates an instance.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">app.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    server = </code><code class="keyword">new</code><code class="plain"> Arrow();</code></div>
+<div class="line"><code class="plain">server.on(</code><code class="string">'started'</code><code class="plain">, function () {</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// Creates a socket.io instance and attaches it to the Arrow instance</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">this</code><code class="plain">.io = require(</code><code class="string">'socket.io'</code><code class="plain">)(</code><code class="keyword">this</code><code class="plain">.server, {logger: </code><code class="keyword">this</code><code class="plain">.logger});</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// Adds a connection listener </code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">this</code><code class="plain">.io.on(</code><code class="string">'connection'</code><code class="plain">, function(socket) {</code></div>
+<div class="line"><code class="plain">        console.log(</code><code class="string">'a user connected '</code><code class="plain"> + socket.id);</code></div>
+<div class="line"><code class="plain">        </code><code class="comments">// Listens for a new message</code></div>
+<div class="line"><code class="plain">        socket.on(</code><code class="string">'message'</code><code class="plain">, function(data) {</code></div>
+<div class="line"><code class="plain">            </code><code class="comments">// Alerts all clients there is a new message</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">this</code><code class="plain">.io.emit(</code><code class="string">'message'</code><code class="plain">, data);</code></div>
+<div class="line"><code class="plain">        });</code></div>
+<div class="line"><code class="plain">    });</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="comments">// start the server</code></div>
+<div class="line"><code class="plain">server.start(); </code></div>
+</div>
+</div>    <p>
+Then, add the socket.io client code to your views or other client-side code.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">web/views/chat.html</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">&lt;html&gt;</code></div>
+<div class="line"><code class="plain">  &lt;head&gt;</code></div>
+<div class="line"><code class="plain">    &lt;style&gt;</code></div>
+<div class="line"><code class="plain">      * { margin: </code><code class="value">0</code><code class="plain">; padding: </code><code class="value">0</code><code class="plain">; box-sizing: border-box; }</code></div>
+<div class="line"><code class="plain">      body { font: 13px Helvetica, Arial; }</code></div>
+<div class="line"><code class="plain">      .inputMessage { padding: 3px; position: fixed; bottom: </code><code class="value">0</code><code class="plain">; width: </code><code class="value">100</code><code class="plain">%; }</code></div>
+<div class="line"><code class="plain">      .messages { list-style-type: none; margin: </code><code class="value">0</code><code class="plain">; padding: </code><code class="value">0</code><code class="plain">; }</code></div>
+<div class="line"><code class="plain">      .messages li { padding: 5px 10px; }</code></div>
+<div class="line"><code class="plain">      .messages li:nth-child(odd) { background: #eee; }      </code></div>
+<div class="line"><code class="plain">    &lt;/style&gt;</code></div>
+<div class="line"><code class="plain">    &lt;script src=</code><code class="string">"http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"</code><code class="plain">&gt;&lt;/script&gt;</code></div>
+<div class="line"><code class="plain">    &lt;!-- Include the socket.io client code --&gt;</code></div>
+<div class="line"><code class="plain">    &lt;script src=</code><code class="string">"https://cdn.socket.io/socket.io-1.3.5.js"</code><code class="plain">&gt;&lt;/script&gt;</code></div>
+<div class="line"><code class="plain">    &lt;script&gt;</code></div>
+<div class="line"><code class="plain">      $(document).ready(function() {</code></div>
+<div class="line"><code class="plain">        </code><code class="comments">// For a production application, you need to change the URL to the published URL</code></div>
+<div class="line"><code class="plain">        var socket = io.connect(</code><code class="string">'http://localhost:8080'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">        $(</code><code class="string">'.inputMessage'</code><code class="plain">).keydown(function(event) {</code></div>
+<div class="line"><code class="plain">          </code><code class="keyword">if</code><code class="plain"> (event.keyCode == </code><code class="value">13</code><code class="plain">) {</code></div>
+<div class="line"><code class="plain">            socket.emit(</code><code class="string">'message'</code><code class="plain">, socket.id + </code><code class="string">':'</code><code class="plain"> + $(</code><code class="string">'.inputMessage'</code><code class="plain">).val());</code></div>
+<div class="line"><code class="plain">            $(</code><code class="string">'.inputMessage'</code><code class="plain">).val(</code><code class="string">''</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">            </code><code class="keyword">return</code><code class="plain"> </code><code class="keyword">false</code><code class="plain">;</code></div>
+<div class="line"><code class="plain">          }</code></div>
+<div class="line"><code class="plain">        });</code></div>
+<div class="line"><code class="plain">        socket.on(</code><code class="string">'message'</code><code class="plain">, function(msg){</code></div>
+<div class="line"><code class="plain">          $(</code><code class="string">'.messages'</code><code class="plain">).append($(</code><code class="string">'&lt;li&gt;'</code><code class="plain">).text(msg));</code></div>
+<div class="line"><code class="plain">        });</code></div>
+<div class="line"><code class="plain">        socket.on(</code><code class="string">'connect'</code><code class="plain">, function(){</code></div>
+<div class="line"><code class="plain">          $(</code><code class="string">'.messages'</code><code class="plain">).append($(</code><code class="string">'&lt;li&gt;'</code><code class="plain">).text(</code><code class="string">'You are '</code><code class="plain"> + socket.id));</code></div>
+<div class="line"><code class="plain">        });</code></div>
+<div class="line"><code class="plain">      });</code></div>
+<div class="line"><code class="plain">    &lt;/script&gt;</code></div>
+<div class="line"><code class="plain">  &lt;/head&gt;</code></div>
+<div class="line"><code class="plain">  &lt;body&gt;</code></div>
+<div class="line"><code class="plain">    &lt;div </code><code class="keyword">class</code><code class="plain">=</code><code class="string">"chatArea"</code><code class="plain">&gt;</code></div>
+<div class="line"><code class="plain">    &lt;ul </code><code class="keyword">class</code><code class="plain">=</code><code class="string">"messages"</code><code class="plain">&gt;&lt;/ul&gt;</code></div>
+<div class="line"><code class="plain">    &lt;/div&gt;</code></div>
+<div class="line"><code class="plain">    &lt;input </code><code class="keyword">class</code><code class="plain">=</code><code class="string">"inputMessage"</code><code class="plain"> placeholder=</code><code class="string">"Type here..."</code><code class="plain">/&gt;</code></div>
+<div class="line"><code class="plain">  &lt;/body&gt;</code></div>
+<div class="line"><code class="plain">&lt;/html&gt; </code></div>
+</div>
+</div>    <p>
+Note you need to implement an Arrow Route to render the HTML.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">web/route/chat.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">var ChatRoute = Arrow.Router.extend({</code></div>
+<div class="line"><code class="plain">    name: </code><code class="string">'chat'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    path: </code><code class="string">'/chat'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    method: </code><code class="string">'GET'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    description: </code><code class="string">'Access the chat client'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    action: function (req, res) {</code></div>
+<div class="line"><code class="plain">        res.render(</code><code class="string">'chat'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">    }</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="plain">module.exports = ChatRoute; </code></div>
+</div>
+</div>    </div>
+    <div class="section section-2 " id="43298928_MigratingNode.ACSApplicationstoArrow-app.js">
+        <h2 class="heading "><span>app.js</span></h2>
+    <p>
+If you add any logic to the <tt class=" ">start()</tt> or <tt class=" ">stop()</tt> methods in the <tt class=" ">app.js</tt> file, you can add the same logic in the Arrow instance's event listeners for the <tt class=" ">starting</tt> and <tt class=" ">stopping</tt> events, respectively.    </p>
+    <p>
+<strong class=" ">Example:</strong>    </p>
+    <p>
+The Node.ACS project logs in and out of an ArrowDB account when the application starts and stops.  The same method calls can be added to the event listeners in an Arrow application.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">NodeACSProject/app.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var ArrowDB = require(</code><code class="string">'arrowdb'</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    arrowDBApp = </code><code class="keyword">new</code><code class="plain"> ArrowDB(</code><code class="string">'API_KEY'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain"> </code></div>
+<div class="line"><code class="plain">function start() {</code></div>
+<div class="line"><code class="plain">    var data = {</code></div>
+<div class="line"><code class="plain">        login: </code><code class="string">'user'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">        password: </code><code class="string">'user'</code></div>
+<div class="line"><code class="plain">    };</code></div>
+<div class="line"><code class="plain">    arrowDBApp.usersLogin(data, function(err, result) {</code></div>
+<div class="line"><code class="plain">        </code><code class="comments">// Logic</code></div>
+<div class="line"><code class="plain">    });  </code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"><code class="plain"> </code></div>
+<div class="line"><code class="plain">function stop() {</code></div>
+<div class="line"><code class="plain">    arrowDBApp.usersLogout(function(err, result) {</code></div>
+<div class="line"><code class="plain">        </code><code class="comments">// Logic</code></div>
+<div class="line"><code class="plain">    }); </code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div><div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">ArrowProject/app.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    server = </code><code class="keyword">new</code><code class="plain"> Arrow(),</code></div>
+<div class="line"><code class="plain">    ArrowDB = require(</code><code class="string">'arrowdb'</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    arrowDBApp = </code><code class="keyword">new</code><code class="plain"> ArrowDB(</code><code class="string">'API_KEY'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">server.on(</code><code class="string">'starting'</code><code class="plain">, function () {</code></div>
+<div class="line"><code class="plain">    var data = {</code></div>
+<div class="line"><code class="plain">        login: </code><code class="string">'user'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">        password: </code><code class="string">'user'</code></div>
+<div class="line"><code class="plain">    };</code></div>
+<div class="line"><code class="plain">    arrowDBApp.usersLogin(data, function(err, result) {</code></div>
+<div class="line"><code class="plain">        </code><code class="comments">// Logic</code></div>
+<div class="line"><code class="plain">    });  </code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"><code class="plain">server.on(</code><code class="string">'stopping'</code><code class="plain">, function () {</code></div>
+<div class="line"><code class="plain">    arrowDBApp.usersLogout(function(err, result) {</code></div>
+<div class="line"><code class="plain">        </code><code class="comments">// Logic</code></div>
+<div class="line"><code class="plain">    }); </code></div>
+<div class="line"><code class="plain">}</code></div>
+<div class="line"><code class="plain">server.start();</code></div>
+</div>
+</div>    <p>
+    </p>
+    </div>
+    <div class="section section-2 " id="43298928_MigratingNode.ACSApplicationstoArrow-config.json">
+        <h2 class="heading "><span>config.json</span></h2>
+    <div class="section section-3 " id="43298928_MigratingNode.ACSApplicationstoArrow-routes">
+        <h3 class="heading "><span>routes</span></h3>
+    <p>
+All routes declared in the <tt class=" ">config.json</tt> file of your Node.ACS application may be declared as a:    </p>
+<ul class=" "><li class=" ">    <p>
+Arrow Route located in the <tt class=" ">web/routes</tt> folder of the Arrow project if the route renders UI. For details, see the example below and <a class="document-link " href="#!/guide/Arrow_Web">Arrow Web</a>.    </p>
+</li><li class=" ">    <p>
+Arrow Model if the route is a simple data object stored in the cloud that you want to have standardized HTTP endpoints. For details, see <a class="document-link " href="#!/guide/Arrow_Models">Arrow Models</a>.    </p>
+</li><li class=" ">    <p>
+Arrow API if the route performs more complex operations and you want to have a custom HTTP endpoint. For details, see <a class="document-link " href="#!/guide/Arrow_APIs">Arrow APIs</a>.    </p>
+</li></ul>    <p>
+<strong class=" ">Example:</strong>    </p>
+    <p>
+The <tt class=" ">config.json</tt> file defines a route that when someone accesses <tt class=" ">SERVER_ADDRESS/foobar</tt>, the Node.ACS application executes the <tt class=" ">bar()</tt> method in the <tt class=" ">controllers/foo.js</tt> file.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">config.json</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">  </code><code class="string">"routes"</code><code class="plain">:</code></div>
+<div class="line"><code class="plain">  [</code></div>
+<div class="line"><code class="plain">    {</code><code class="string">"path"</code><code class="plain">: </code><code class="string">"/foobar"</code><code class="plain">, </code><code class="string">"method"</code><code class="plain">: </code><code class="string">"get"</code><code class="plain">, </code><code class="string">"callback"</code><code class="plain">: </code><code class="string">"foo#bar"</code><code class="plain">}</code></div>
+<div class="line"><code class="plain">  ]</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    <p>
+To use the same route in Arrow, create a CommonJS module, which loads the <tt class=" ">arrow</tt> module, then call the module's <tt class=" ">Router.extend()</tt> method to declare the route.  Pass a dictionary to the <tt class=" ">extend()</tt> method with the following keys defined (all keys are required):    </p>
+    <div class="tablewrap">
+        <table class="confluenceTable">
+        <thead class=" ">    <tr>
+            <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Key    </p>
+            </td>
+                <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Description    </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "/><tbody class=" ">    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+name    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+The name of your route.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+path    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+The endpoint/path for your route.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+method    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+HTTP verb ('DELETE', 'GET', 'POST' or 'PUT').    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+description    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+A description for your route. This is used for documentation purposes.    </p>
+            </td>
+        </tr>
+    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+action    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Function that allows you to interact with Arrow APIs and Models and send data to your template engine.    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    <p>
+Finally, expose the route using the <tt class=" ">modules.exports</tt> variable.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">web/routes/foobar.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">var Foobar = Arrow.Router.extend({</code></div>
+<div class="line"><code class="plain">    name: </code><code class="string">'foobar'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    path: </code><code class="string">'/foobar'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    method: </code><code class="string">'GET'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    description: </code><code class="string">'Does foo'</code><code class="plain">,</code></div>
+<div class="line"><code class="plain">    action: function (req, res) {</code></div>
+<div class="line"><code class="plain">        res.render(</code><code class="string">'example'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">    }</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="plain">module.exports = Foobar;</code></div>
+</div>
+</div>    </div>
+    <div class="section section-3 " id="43298928_MigratingNode.ACSApplicationstoArrow-filters">
+        <h3 class="heading "><span>filters</span></h3>
+    <p>
+All filters declared in the <tt class=" ">config.json</tt> file of your Node.ACS application may be declared as an <a class="document-link " href="#!/guide/Arrow_Blocks">Arrow Block module</a> that can be assigned to the <tt class=" ">before</tt> property in the definition file of an Arrow Model or API.    </p>
+    </div>
+    <div class="section section-3 " id="43298928_MigratingNode.ACSApplicationstoArrow-websockets">
+        <h3 class="heading "><span>websockets</span></h3>
+    <p>
+For all websockets declared in the <tt class=" ">config.json</tt> file of your Node.ACS application, you will need to add an event listener to the socket once a connection is established, which requires socket.io to be added to the project. For details, see the &quot;socket.io instance&quot; section above.    </p>
+    <p>
+<strong class=" ">Example:</strong>    </p>
+    <p>
+The <tt class=" ">config.json</tt> file defines a websocket that whenever a <tt class=" ">newChatMsg</tt> is received, the Node.ACS application executes the <tt class=" ">receiveMessage()</tt> method in the <tt class=" ">websockets/chatroom.js</tt> file.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">NodeACSProject/config.json</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">  </code><code class="string">"websockets"</code><code class="plain">:  [</code></div>
+<div class="line"><code class="plain">    {</code><code class="string">"event"</code><code class="plain">: </code><code class="string">"newChatMsg"</code><code class="plain">, </code><code class="string">"callback"</code><code class="plain">: </code><code class="string">"chatroom#receiveMessage"</code><code class="plain">}</code></div>
+<div class="line"><code class="plain">  ]</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    <p>
+To use the same websocket in Arrow, first add socket.io as described in the <a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-socket.io">socket.io instance section</a>, then add a <tt class=" ">newChatMsg</tt> event listener for the socket in the <tt class=" ">connection</tt> event listener.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">ArrowProject/app.js</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain"> var Arrow = require(</code><code class="string">'arrow'</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    server = </code><code class="keyword">new</code><code class="plain"> Arrow();</code></div>
+<div class="line"><code class="plain">server.on(</code><code class="string">'started'</code><code class="plain">, function () {</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// Creates a socket.io instance and attaches it to the Arrow instance</code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">this</code><code class="plain">.io = require(</code><code class="string">'socket.io'</code><code class="plain">)(</code><code class="keyword">this</code><code class="plain">.server, {logger: </code><code class="keyword">this</code><code class="plain">.logger});</code></div>
+<div class="line"><code class="plain">    </code><code class="comments">// Adds a connection listener </code></div>
+<div class="line"><code class="plain">    </code><code class="keyword">this</code><code class="plain">.io.on(</code><code class="string">'connection'</code><code class="plain">, function(socket) {</code></div>
+<div class="line"><code class="plain">        socket.on(</code><code class="string">'newChatMsg'</code><code class="plain">, function(data) {</code></div>
+<div class="line"><code class="plain">            </code><code class="comments">// Add the receiveMessage() logic here from websockets/chatroom.js</code></div>
+<div class="line"><code class="plain">        });</code></div>
+<div class="line"><code class="plain">    });</code></div>
+<div class="line"><code class="plain">});</code></div>
+<div class="line"><code class="comments">// start the server</code></div>
+<div class="line"><code class="plain">server.start(); </code></div>
+</div>
+</div>    <p>
+    </p>
+    </div>
+    </div>
+    <div class="section section-2 " id="43298928_MigratingNode.ACSApplicationstoArrow-controllersfolder">
+        <h2 class="heading "><span>controllers folder</span></h2>
+    <p>
+All logic declared in the Node.ACS controllers should be moved to the Arrow Route module in the <tt class=" ">web/routes</tt> folder of the Arrow project or Arrow API module. For details, see the <a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-config.j">config.json section</a> above.    </p>
+    </div>
+    <div class="section section-2 " id="43298928_MigratingNode.ACSApplicationstoArrow-filtersfolder">
+        <h2 class="heading "><span>filters folder</span></h2>
+    <p>
+All logic declared in the Node.ACS filters should be moved to the Arrow Block module.    </p>
+    </div>
+    <div class="section section-2 " id="43298928_MigratingNode.ACSApplicationstoArrow-websocketsfolder">
+        <h2 class="heading "><span>websockets folder</span></h2>
+    <p>
+All logic declared in Node.ACS websockets will need to be declared with the socket event listener, which requires socket.io to be added to the project. For details, see the <a class="document-link " href="#!/guide/Migrating_Node.ACS_Applications_to_Arrow-section-43298928_MigratingNode.ACSApplicationstoArrow-config.j">config.json section</a> above.    </p>
+    </div>
+    <div class="section section-2 " id="43298928_MigratingNode.ACSApplicationstoArrow-publicfolder">
+        <h2 class="heading "><span>public folder</span></h2>
+    <p>
+Copy all files in the <tt class=" ">public</tt> folder of your Node.ACS application to the <tt class=" ">web/public</tt> folder in the new Arrow project.    </p>
+    </div>
+    <div class="section section-2 " id="43298928_MigratingNode.ACSApplicationstoArrow-viewsfolder">
+        <h2 class="heading "><span>views folder</span></h2>
+    <p>
+Copy all files in the <tt class=" ">views</tt> folder of your Node.ACS application to the <tt class=" ">web/views</tt> folder in the new Arrow project.    </p>
+    <div class="confbox admonition admonition-note aui-message warning shadowed information-macro">
+        
+    <p>
+Arrow also supports other template engines including Handlebars, Markdown and ReactJS.    </p>
+    </div>
+    
+    </div>
+    <div class="section section-2 " id="43298928_MigratingNode.ACSApplicationstoArrow-RuntheArrowproject">
+        <h2 class="heading "><span>Run the Arrow project</span></h2>
+    <p>
+After you have made your changes, to test the project, run or publish the Arrow project.    </p>
+    <p>
+To run the Arrow project locally, execute the following command from the project's directory:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">appc run</code></div>
+</div>
+</div>    </div>
+    <div class="section section-2 " id="43298928_MigratingNode.ACSApplicationstoArrow-PublishtheArrowproject">
+        <h2 class="heading "><span>Publish the Arrow project</span></h2>
+    <p>
+To publish the Arrow project to the cloud, execute the following command from the project's directory:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">appc publish</code></div>
+</div>
+</div>    <p>
+This will produce a new URL, different from that of your existing Node.ACS project. Follow the instructions in the <a class="external-link external-link" href="https://web.appcelerator.com/product/migrate-app#node_acs_instructions" target="_blank">Node.ACS section</a> of the platform migration page to replace your existing Node.ACS project and update clients that use it.    </p>
+    <p>
+    </p>
+    </div>
+        </div><a id="editButton" href="https://wiki.appcelerator.org/pages/editpage.action?pageId=43298928"><span>Edit</span></a>
+    
+        <div class="footer">
+            Created with <a href="http://k15t.com/display/web/Scroll-Wiki-EclipseHelp-Exporter-for-Confluence" target="_blank">Scroll EclipseHelp Exporter for Confluence</a>.
+        </div>
+    </div>
+</body>
+</html>

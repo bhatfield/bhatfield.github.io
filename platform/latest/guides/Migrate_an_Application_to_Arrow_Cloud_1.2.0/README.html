@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Migrate an Application to Arrow Cloud 1.2.0</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta content="Scroll EclipseHelp Exporter" name="generator"/>
+
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" media="print"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header"/>
+
+        <div id="43309269" class="content">
+            <h1>Migrate an Application to Arrow Cloud 1.2.0</h1>
+    <div class="section section-2 " id="43309269_MigrateanApplicationtoArrowCloud1.2.0-toc">
+        <h2 class="heading "><span/></h2>
+<ul class="toc-indentation "><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrate_an_Application_to_Arrow_Cloud_1.2.0-section-43309269_MigrateanApplicationtoArrowCloud1.2.0-Overview">Overview</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrate_an_Application_to_Arrow_Cloud_1.2.0-section-43309269_MigrateanApplicationtoArrowCloud1.2.0-ArrowCloudLoggingandAccessLogs">Arrow Cloud Logging and Access Logs</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrate_an_Application_to_Arrow_Cloud_1.2.0-section-43309269_MigrateanApplicationtoArrowCloud1.2.0-NodeVersion">Node Version</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrate_an_Application_to_Arrow_Cloud_1.2.0-section-43309269_MigrateanApplicationtoArrowCloud1.2.0-PortBinding">Port Binding</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrate_an_Application_to_Arrow_Cloud_1.2.0-section-43309269_MigrateanApplicationtoArrowCloud1.2.0-InstallCustomBinaries">Install Custom Binaries</a>    </p>
+</li><li class=" ">    <p>
+<a class="document-link " href="#!/guide/Migrate_an_Application_to_Arrow_Cloud_1.2.0-section-43309269_MigrateanApplicationtoArrowCloud1.2.0-OptionalHealthCheck">Optional Health Check</a>    </p>
+</li></ul>    <div class="section section-3 " id="43309269_MigrateanApplicationtoArrowCloud1.2.0-Overview">
+        <h3 class="heading "><span>Overview</span></h3>
+    <p>
+Arrow Cloud 1.2.0 uses Docker containers to host apps instead of OpenVZ.  Applications can provision their own containers and run in it as root.  This guide covers the new features available in Arrow Cloud 1.2.0.    </p>
+    <p>
+You may need to make some changes to your Arrow applications before publishing them to Arrow Cloud 1.2.0.  Specifically, if you use the ACS logger utility (<tt class=" ">require('acs').logger</tt>) to log messages, you will need to update your application to use the <tt class=" ">appc-logger</tt> module.    </p>
+    </div>
+    <div class="section section-3 " id="43309269_MigrateanApplicationtoArrowCloud1.2.0-ArrowCloudLoggingandAccessLogs">
+        <h3 class="heading "><span>Arrow Cloud Logging and Access Logs</span></h3>
+    <p>
+You can continue to use Node's built-in console object to log messages, that is, you can continue to use <tt class=" ">console.log()</tt> and <tt class=" ">console.error()</tt> in your application.    </p>
+    <p>
+Arrow Cloud also provides a logging utility for your convenience. Prior to Release 1.2.0, the application retrieved the logger utility by loading the ACS module and using the <tt class=" ">logger</tt> reference to make log calls:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var logger = require(</code><code class="string">'acs'</code><code class="plain">).logger;</code></div>
+<div class="line"><code class="plain">logger.info(</code><code class="string">'Hello, world, from the ACS logger.'</code><code class="plain">);</code></div>
+</div>
+</div>    <p>
+A more generic and stronger logging utility named <tt class=" ">appc-logger</tt>, which is a public NPM module, deprecates the ACS logger utility.    </p>
+    <p>
+To use the new module, load the <tt class=" ">appc-logger</tt> module, then create a logger instance using one of the create methods:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var Logger = require(</code><code class="string">'appc-logger'</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    logger = Logger.createLogger();</code></div>
+<div class="line"><code class="plain">logger.info(</code><code class="string">'Hello, world, from the appc-logger.'</code><code class="plain">);</code></div>
+</div>
+</div>    <div class="confbox admonition admonition-note aui-message warning shadowed information-macro">
+            <div class="title">Standard Node.js Applications</div>
+        
+    <p>
+If your Arrow application is a standard Node.js application not using the Arrow Builder framework, you need to add <tt class=" ">appc-logger</tt> v1.1.4 or higher as a dependency in the <tt class=" ">package.json</tt> file.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">package.json</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">  </code><code class="string">"dependencies"</code><code class="plain"> : {</code></div>
+<div class="line"><code class="plain">     </code><code class="string">"appc-logger"</code><code class="plain">: </code><code class="string">"&gt;=1.1.4"</code></div>
+<div class="line"><code class="plain">   }</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    </div>
+    
+    <p>
+    </p>
+    <p>
+If your app is built based on Express or Restify, you can take advantage of Arrow Cloud logging infrastructure and <tt class=" ">appc-logger</tt> to log user requests.    </p>
+    <p>
+To initialize a Restify or Express logger, follow the same directions as before, except pass either a Restify server instance or Express app instance to the <tt class=" ">createRestifyLogger()</tt> or <tt class=" ">createExpressLogger()</tt> methods, respectively, to create a logger instance:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">var express = require(</code><code class="string">'express'</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">    app = express(),</code></div>
+<div class="line"><code class="plain">	Logger = require(</code><code class="string">'appc-logger'</code><code class="plain">),</code></div>
+<div class="line"><code class="plain">	logger = Logger.createExpressLogger(app); </code><code class="comments">// or Logger.createRestifyLogger(server);</code></div>
+<div class="line"><code class="plain">app.get(</code><code class="string">'/'</code><code class="plain">, function(req, res) {</code></div>
+<div class="line"><code class="plain">	logger.info(</code><code class="string">'Hello world from the appc-logger.'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">	res.send(</code><code class="string">'Welcome to Appcelerator Arrow Cloud!'</code><code class="plain">);</code></div>
+<div class="line"><code class="plain">});</code></div>
+</div>
+</div>    <p>
+Once you create a logger instance with the <tt class=" ">createExpressLogger()</tt> method, access logs will automatically be enabled for the application.    </p>
+    <p>
+In the code sample, you use the logger to log debug logs. Behind the scenes it logs user requests automatically. You can check access logs via Appcelerator CLI:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">appc cloud accesslog</code></div>
+<div class="line"><code class="plain">## For more detailed JSON output add the --full_content option</code></div>
+<div class="line"><code class="plain">appc cloud accesslog --full_content</code></div>
+</div>
+</div>    <p>
+For more detailed appc-logger usage, refer to <a class="external-link external-link" href="https://github.com/appcelerator/appc-logger" target="_blank">appc-logger Github project</a> and <a class="external-link external-link" href="https://docs.appcelerator.com/platform/latest/#!/api/Arrow.Logger" target="_blank">Arrow Logger API reference</a>.    </p>
+    </div>
+    <div class="section section-3 " id="43309269_MigrateanApplicationtoArrowCloud1.2.0-NodeVersion">
+        <h3 class="heading "><span>Node Version</span></h3>
+    <p>
+Prior to Arrow Cloud 1.2.0, the only Node versions you could use were 0.8.26 and 0.10.22.    </p>
+    <p>
+Starting with Arrow Cloud 1.2.0, you may specify any version of Node. Node 0.8.26, 0.10.22 and 0.12.4 are built in, but other versions will be downloaded from <a class="external-link external-link" href="https://nodejs.org/" target="_blank">https://nodejs.org/</a> when the application is built prior to running <tt class=" ">npm install</tt>.  The Node version is managed by the 'n' module (<a class="external-link external-link" href="https://github.com/tj/n" target="_blank">https://github.com/tj/n</a>).    </p>
+    <p>
+To specify a Node version, in the <tt class=" ">package.json</tt> file, set the <tt class=" ">engines.node</tt> key to the version of Node you want to use. DO NOT SPECIFY A RANGE. If you do not specify a Node version, the application will use 0.12.4 by default.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">package.json</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">  </code><code class="string">"engines"</code><code class="plain">: {</code></div>
+<div class="line"><code class="plain">    </code><code class="string">"node"</code><code class="plain">: </code><code class="string">"0.12.4"</code></div>
+<div class="line"><code class="plain">  }</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    </div>
+    <div class="section section-3 " id="43309269_MigrateanApplicationtoArrowCloud1.2.0-PortBinding">
+        <h3 class="heading "><span>Port Binding</span></h3>
+    <p>
+Starting with Arrow Cloud 1.2.0, you may explicitly set the port the application listens on.  Set the <tt class=" ">cloud.environment.PORT</tt> key in <tt class=" ">appc.json</tt> file. or use the <tt class=" ">appc cloud config --set PORT=&lt;PORT_NUMBER&gt;</tt> command to set the special environment variable PORT. If you do not set PORT explicitly before publishing your application, Arrow Cloud sets it to 80 by default.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">appc.json</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">  cloud: {</code></div>
+<div class="line"><code class="plain">    environment: {</code></div>
+<div class="line"><code class="plain">      PORT: </code><code class="value">8080</code></div>
+<div class="line"><code class="plain">    }</code></div>
+<div class="line"><code class="plain">  }</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    <p>
+Verify that the applications listens on PORT, otherwise your app cannot be connected. Use <tt class=" ">process.env.PORT</tt> in the application to verify the application is connected to a port.    </p>
+    </div>
+    <div class="section section-3 " id="43309269_MigrateanApplicationtoArrowCloud1.2.0-InstallCustomBinaries">
+        <h3 class="heading "><span>Install Custom Binaries</span></h3>
+    <p>
+Arrow Cloud allows you to install additional binaries before your application is built.    </p>
+    <p>
+Starting with Arrow Cloud 1.3.0, to install additional third-party tools, create a script called <tt class=" ">install.sh</tt> in the project's root folder, which installs the required packages.    </p>
+    <div class="confbox admonition admonition-info aui-message hint shadowed information-macro">
+            <div class="title">ImageMagick and PhantomJS</div>
+        
+    <p>
+Both ImageMagick and PhantomJS are pre-installed on the containers.    </p>
+    </div>
+    
+    <p>
+Below is a sample script located at <tt class=" ">./install.sh</tt> folder in the application's directory.    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">install.sh</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="comments">#!/bin/bash</code></div>
+<div class="line"><code class="functions">echo</code><code class="plain"> </code><code class="string">"---"</code></div>
+<div class="line"><code class="functions">echo</code><code class="plain"> </code><code class="string">"Start installing some tools..."</code></div>
+<div class="line"><code class="functions">echo</code><code class="plain"> </code><code class="string">"(This bash script is run at npm preinstall.)"</code></div>
+<div class="line"><code class="functions">echo</code><code class="plain"> </code><code class="string">"---"</code></div>
+<div class="line"><code class="plain">apt-get </code><code class="functions">install</code><code class="plain"> -qq </code><code class="functions">tar</code><code class="plain"> </code><code class="functions">bzip2</code><code class="plain"> libaio1</code></div>
+<div class="line"><code class="plain">apt-get </code><code class="functions">install</code><code class="plain"> -y wget</code></div>
+<div class="line"><code class="functions">echo</code><code class="plain"> </code><code class="string">"---"</code></div>
+<div class="line"><code class="functions">echo</code><code class="plain"> </code><code class="string">"done installing additional tools!"</code></div>
+<div class="line"><code class="functions">echo</code><code class="plain"> </code><code class="string">"---"</code></div>
+</div>
+</div>    <p>
+Prior to Release 1.3.0, you needed to create a script in your project folder (no name restrictions) and add the script to the <tt class=" ">package.json</tt> file. In the  <tt class=" ">package.json</tt>  file, set the  <tt class=" ">scripts.preinstall</tt>  or <tt class=" ">scripts.postinstall</tt> field to the path to the script:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">package.json</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">  </code><code class="string">"scripts"</code><code class="plain">: {</code></div>
+<div class="line"><code class="plain">    </code><code class="string">"preinstall"</code><code class="plain">: </code><code class="string">"myscript.sh"</code></div>
+<div class="line"><code class="plain">  }</code></div>
+</div>
+</div>    <p>
+Note that from Arrow Cloud 1.3.0 and later, you can still use the above method but do not name the script <tt class=" ">install.sh</tt> or it will run twice, and only install the binaries in the project directory. Prior to Arrow Cloud 1.3.0, binaries could be installed outside the project directory.    </p>
+    </div>
+    <div class="section section-3 " id="43309269_MigrateanApplicationtoArrowCloud1.2.0-OptionalHealthCheck">
+        <h3 class="heading "><span>Optional Health Check</span></h3>
+    <p>
+Starting with Arrow Cloud 1.2.0, you can optionally define a health-check endpoint, which Arrow Cloud will check to verify that the application is up and running. To create a health-check endpoint, define an endpoint called <tt class=" ">arrowPing.json</tt> that returns a 200 HTTP status code, then in the <tt class=" ">package.json</tt> file, set the <tt class=" ">healthCheck</tt> key to <tt class=" ">true</tt> to let Arrow Cloud know that the health check endpoint is defined.    </p>
+    <p>
+Starting with Arrow 1.2.x, included Appcelerator CLI Core 4.1.3, the Arrow project will have already have an <tt class=" ">arrowPing.json</tt> endpoint implemented.    </p>
+    <p>
+If <tt class=" ">arrowPing.json</tt> is not defined, Arrow Cloud assumes that your application is up when there is no exception after the container is launched. If your application takes a while to come up, users could access your application, which returns 503 or 502 errors. It is highly recommended that you implement and include the health-check endpoint for your app.    </p>
+    <p>
+To let Arrow Cloud know that the application implemented the health-check endpoint, set the <tt class=" ">healthCheck</tt> key to <tt class=" ">true</tt> in the <tt class=" ">package.json</tt> file:    </p>
+    <p>
+    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="title">./package.json</div>
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain"> </code><code class="string">"healthCheck"</code><code class="plain">: </code><code class="keyword">true</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div>    <p>
+    </p>
+    <p>
+    </p>
+    </div>
+    </div>
+        </div><a id="editButton" href="https://wiki.appcelerator.org/pages/editpage.action?pageId=43309269"><span>Edit</span></a>
+    
+        <div class="footer">
+            Created with <a href="http://k15t.com/display/web/Scroll-Wiki-EclipseHelp-Exporter-for-Confluence" target="_blank">Scroll EclipseHelp Exporter for Confluence</a>.
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Arrow Builder Release Notes</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta content="Scroll EclipseHelp Exporter" name="generator"/>
+
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" media="print"/>
+</head>
+<body>
+    <div class="container">
+        <div class="header"/>
+
+        <div id="43299747" class="content">
+            <h1>Arrow Builder Release Notes</h1>
+    <div class="section section-2 " id="43299747_ArrowBuilderReleaseNotes-ArrowBuilder1.3.13">
+        <h2 class="heading "><span>Arrow Builder 1.3.13</span></h2>
+    <p>
+Arrow Builder 1.3.13 is a minor release that includes new feature, improvement and bug fixes.    </p>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-BehaviorChanges">
+        <h3 class="heading "><span>Behavior Changes</span></h3>
+<ul class=" "><li class=" ">    <p>
+When using the guided connector development, after adding a new capability, the Arrow application will stop running and output instructions on what to do next.  Previously, the Arrow application would restart, which could cause a crash.    </p>
+</li></ul>    </div>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-NewFeaturesandImprovements">
+        <h3 class="heading "><span>New Features and Improvements</span></h3>
+<ul class=" "><li class=" ">    <p>
+Add ability to set descriptions for auto-generated APIs. For details, see the <i class=" ">Model Properties</i> section in the Arrow Admin console.    </p>
+</li><li class=" ">    <p>
+Allow Arrow client sessions to end when the browser session ends    </p>
+</li></ul>    </div>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-FixedIssues">
+        <h3 class="heading "><span>Fixed Issues</span></h3>
+<ul class=" "><li class=" ">    <p>
+Fixed an issue where adding '\n' to the description moves the content out of the table    </p>
+</li><li class=" ">    <p>
+Fixed an issue where an bizarre stack trace would outputted after restarting the Arrow project    </p>
+</li><li class=" ">    <p>
+Fixed an issue using the Photo sync images parameter with Arrow.  Use the following syntax to pass the parameter:    </p>
+<div xmlns="http://www.w3.org/1999/xhtml" class="confbox programlisting scroll-unprocessed">
+<div class="defaultnew syntaxhighlighter">
+<div class="line"><code class="plain">{</code></div>
+<div class="line"><code class="plain">	</code><code class="string">'photo_sizes'</code><code class="plain">: {preview: </code><code class="string">'120x120#'</code><code class="plain">},</code></div>
+<div class="line"><code class="plain">	</code><code class="string">'photo_sync_sizes[]'</code><code class="plain">: </code><code class="string">'preview'</code></div>
+<div class="line"><code class="plain">}</code></div>
+</div>
+</div></li><li class=" ">    <p>
+Fixed an issue where the Arrow application now throws a 504 error code if the request takes more than 60 seconds    </p>
+</li><li class=" ">    <p>
+Fixed an issue where the MSSQL connector would throw an error on run    </p>
+</li></ul>    <p>
+    </p>
+    </div>
+    </div>
+    <div class="section section-2 " id="43299747_ArrowBuilderReleaseNotes-ArrowBuilder1.2.62-18September2015">
+        <h2 class="heading "><span>Arrow Builder 1.2.62 - 18 September 2015</span></h2>
+    <p>
+Arrow Builder 1.2.62 is a patch release, addressing high-priority issues from previous releases.    </p>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-NewFeatures">
+        <h3 class="heading "><span>New Features</span></h3>
+<ul class=" "><li class=" ">    <p>
+Create a Swagger Interface as part of the API documentation. For details, see <a class="document-link " href="#!/guide/Arrow_API_Docs">Arrow API Docs</a>.    </p>
+</li><li class=" ">    <p>
+Support clearing local logs in the Admin Console.    </p>
+</li></ul>    </div>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-FixedIssues.1">
+        <h3 class="heading "><span>Fixed Issues</span></h3>
+<ul class=" "><li class="p1 ">    <p>
+API-1013: Logs in the root directory causing server to reload    </p>
+</li><li class="p1 ">    <p>
+API-1015: Server should not restart on certain file/directory changes, such as web/public, web/views/ and package.json    </p>
+</li><li class="p1 ">    <p>
+API-1026: Cannot set model fields during a POST in a pre-block on an ArrowDB model    </p>
+</li><li class="p1 ">    <p>
+API-1027: Transaction logs still have too much unnecessary data in them    </p>
+</li><li class="p1 ">    <p>
+API-1030: Server size was not being applied using appc 5.0.0-30    </p>
+</li><li class="p1 ">    <p>
+API-1033: Disable memwatch    </p>
+</li></ul>    </div>
+    </div>
+    <div class="section section-2 " id="43299747_ArrowBuilderReleaseNotes-ArrowBuilder1.2.48-09September2015">
+        <h2 class="heading "><span>Arrow Builder 1.2.48 - 09 September 2015</span></h2>
+    <p>
+Arrow Builder 1.2.48 is a minor release that includes new features, improvements and bug fixes.    </p>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-NewFeaturesandImprovements.1">
+        <h3 class="heading "><span>New Features and Improvements</span></h3>
+<ul class=" "><li class=" ">    <p>
+Add ability to customize the styling of the API Docs page.  For details, see the ArrowWeb tab in the Admin console and <a class="document-link " href="#!/guide/Arrow_API_Docs">Arrow API Docs</a>.    </p>
+</li><li class=" ">    <p>
+Hide overridden APIs in the API Docs page.    </p>
+</li><li class=" ">    <p>
+Map missing methods, such as cookie, vary, etc. to the common Express method in the response object.    </p>
+</li><li class=" ">    <p>
+Implement new LDAP plugin for Arrow client authentication.  For details, see <a class="document-link " href="#!/guide/Arrow_Authentication_Schemes-section-43302486_ArrowAuthenticationSchemes-LDAP">Arrow Authentication Schemes: LDAP</a>.    </p>
+</li><li class=" ">    <p>
+Improve support of loading and overriding configuration from the environment.  Prefix environment variables with <tt class=" ">ARROW_</tt> to override the value from the configuration file.  For example, if you have <tt class=" ">apikey</tt> defined in the configuration file, you can override the value with the environment variable <tt class=" ">ARROW_APIKEY</tt>.    </p>
+</li><li class=" ">    <p>
+Add default health-check API endpoint <tt class=" ">arrowPing.json</tt>.    </p>
+</li><li class=" ">    <p>
+Add ability to hide APIs in the API Docs. To hide documentation, set the <tt class=" ">documented</tt> property to <tt class=" ">false</tt> for Connectors, Models, APIs or Blocks.    </p>
+</li><li class=" ">    <p>
+Exposed the <tt class=" ">connectionTimeout</tt> property in the MSSQL connector.    </p>
+</li><li class=" ">    <p>
+Add ability to specify the models to generate from a connector. In the connector's configuration file, set the <tt class=" ">generateModels</tt> key to an array of model names you want to include.    </p>
+</li><li class=" ">    <p>
+Exposed the <tt class=" ">schemaRefresh</tt> property in the SalesForce connector and added a If-Modified-Since check to update the schema only when needed.    </p>
+</li><li class=" ">    <p>
+Print out application version in Arrow console log during startup.    </p>
+</li><li class=" ">    <p>
+New guided development flow for creating an Arrow Connector.    </p>
+</li><li class=" ">    <p>
+Improved server start time by skipping appc install when possible.    </p>
+</li></ul>    </div>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-FixedIssues.2">
+        <h3 class="heading "><span>Fixed Issues</span></h3>
+<ul class=" "><li class="p1 ">    <p>
+API-580: Model Data View: Tabular data layout scrolls, but Table header doesn't follow it    </p>
+</li><li class="p1 ">    <p>
+API-655: Generated API Docs source has to be manually deleted to be refreshed    </p>
+</li><li class="p1 ">    <p>
+API-738: Marketplace formatting is not right    </p>
+</li><li class="p1 ">    <p>
+API-750: actions: ['read'] set on a model still creates a PUT API endpoint    </p>
+</li><li class="p1 ">    <p>
+API-752: Multiple Instances of one connector overwrite generated models    </p>
+</li><li class="p1 ">    <p>
+API-809: Setting model actions to read includes write API    </p>
+</li><li class="p1 ">    <p>
+API-825: Unable to set 201 response with object location in custom API    </p>
+</li><li class="p1 ">    <p>
+API-837: Blocks after{Action} and after are mutually exclusive    </p>
+</li><li class="p1 ">    <p>
+API-861: Investigate if there is memory leak with registry server    </p>
+</li><li class="p1 ">    <p>
+API-896: In the Arrow admin page, modelAutogen is documented incorrectly    </p>
+</li><li class="p1 ">    <p>
+API-905: Error using two different databases with alias    </p>
+</li><li class="p1 ">    <p>
+API-910: ArrowDB: Session Collisions in Connector    </p>
+</li><li class="p1 ">    <p>
+API-927: Process signal events for shutdown aren't correctly being handled    </p>
+</li><li class="p1 ">    <p>
+API-928: Publishing with multiple servers with the same name doesn't properly pass the correct org    </p>
+</li><li class="p1 ">    <p>
+API-931: Arrow: NO show() API for ACLs    </p>
+</li><li class="p1 ">    <p>
+API-934: Creating a new model in console does not reload properly so i cannot test the API without restarting the server    </p>
+</li><li class="p1 ">    <p>
+API-949: Regression: API code examples are not laying out properly    </p>
+</li><li class="p1 ">    <p>
+API-950: Regression: Performance Log Tab now showing all the data correctly    </p>
+</li><li class="p1 ">    <p>
+API-954: Data Editor: Updating a field that is type Number results in a return type of String    </p>
+</li><li class="p1 ">    <p>
+API-956: Memory leak detected related to handling HTTP requests    </p>
+</li><li class="p1 ">    <p>
+API-960: Regression: performance log view is missing last server step    </p>
+</li><li class="p1 ">    <p>
+API-963: In preproduction, cannot create an Arrow project    </p>
+</li><li class="p1 ">    <p>
+API-966: Regression on import arrow app    </p>
+</li><li class="p1 ">    <p>
+API-968: If you update a model while your Arrow app is running locally, then the local Arrow app will not restart itself    </p>
+</li><li class="p1 ">    <p>
+API-971: After unpublish, if you try and republish, you get an error    </p>
+</li><li class="p1 ">    <p>
+API-972: Regression: hitting /api/testapi from API Doc causes exception    </p>
+</li><li class="p1 ">    <p>
+API-978: In production, cannot publish an Arrow app with 4.1.1 stack    </p>
+</li><li class="p1 ">    <p>
+API-982: If you make any API requests, then no activity will appear in the Logs tab    </p>
+</li><li class="p1 ">    <p>
+API-987: If you create a different connector alias in default.js, different errors are returned for 4.1.X stack and 5.0.0 stack    </p>
+</li></ul>    </div>
+    </div>
+    <div class="section section-2 " id="43299747_ArrowBuilderReleaseNotes-ArrowBuilder1.1.2-20July2015">
+        <h2 class="heading "><span>Arrow Builder 1.1.2 - 20 July 2015</span></h2>
+    <p>
+Arrow Builder 1.1.2 is a patch release, addressing high-priority issues from previous releases.    </p>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-FixedIssues.3">
+        <h3 class="heading "><span>Fixed Issues</span></h3>
+<ul class=" "><li class=" ">    <p>
+API-914: After block runs on generated models before API finishes    </p>
+</li><li class=" ">    <p>
+API-917: The styling of the code examples in the Admin console is skewed for both local builds and published Arrow applications.    </p>
+</li><li class=" ">    <p>
+API-920: If you make a DELETE or PUT request, then &quot;TypeError: object is not a function&quot; error is returned back    </p>
+</li></ul>    </div>
+    </div>
+    <div class="section section-2 " id="43299747_ArrowBuilderReleaseNotes-ArrowBuilder1.1.0-08July2015">
+        <h2 class="heading "><span>Arrow Builder 1.1.0 - 08 July 2015</span></h2>
+    <p>
+Arrow Builder 1.1.0 is a feature release, including new features, improvements and bug fixes.    </p>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-BehaviorChanges.1">
+        <h3 class="heading "><span>Behavior Changes</span></h3>
+    <p>
+Connectors no longer automatically generate APIs for their models.  To automatically generate the APIs for a connector's model, add the <tt class=" ">modelAutogen</tt> key to the connector's configuration file and set it to <tt class=" ">true</tt>.    </p>
+    </div>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-FixedIssuesandImprovements">
+        <h3 class="heading "><span>Fixed Issues and Improvements</span></h3>
+<ul class=" "><li class=" ">    <p>
+API-526: MySQL Connector: If you use sel/unsel in a query, null values are being returned    </p>
+</li><li class=" ">    <p>
+API-556: While running locally, if you update a local model's name, then the previous auto-generated API docs do not get deleted    </p>
+</li><li class=" ">    <p>
+API-600: Connector models should not generate API's automatically    </p>
+</li><li class=" ">    <p>
+API-646: ArrowDB: Show an error when trying to query with $like and a wildcard prefix    </p>
+</li><li class=" ">    <p>
+API-690: ArrowDB Connector: if you use the distinct endpoint with a $like query, a stack trace is thrown in the terminal    </p>
+</li><li class=" ">    <p>
+API-803: Conflict with auto-generated &quot;/api/user/:id&quot; API endpoint when creating an &quot;/api/user/me&quot; API endpoint    </p>
+</li><li class=" ">    <p>
+API-851: Defer batch requests to connectors if applicable    </p>
+</li><li class=" ">    <p>
+API-866: Export express so user can access included middleware    </p>
+</li><li class=" ">    <p>
+API-876: If you make a PUT API call, you will get a 404 on the first request    </p>
+</li><li class=" ">    <p>
+API-879: Fixed request logging    </p>
+</li><li class=" ">    <p>
+API-884: Fixed access log capabilities    </p>
+</li><li class=" ">    <p>
+API-894: If you create a new model while running locally, the local admin page becomes blank after you refresh    </p>
+</li><li class=" ">    <p>
+API-906: Latest arrow is returning 404 for PUT request (update) using arrowdb    </p>
+</li></ul>    </div>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-KnownIssues">
+        <h3 class="heading "><span>Known Issues</span></h3>
+<ul class=" "><li class=" ">    <p>
+API-905: Arrow application throws an error when trying to use two different MySQL databases.    </p>
+</li><li class=" ">    <p>
+API-917: The styling of the code examples in the Admin console is skewed for both local builds and published Arrow applications.    </p>
+</li></ul>    </div>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-APIChanges">
+        <h3 class="heading "><span>API Changes</span></h3>
+    <div class="tablewrap">
+        <table class="confluenceTable">
+        <thead class=" ">    <tr>
+            <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Name    </p>
+            </td>
+                <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Type    </p>
+            </td>
+                <td class="confluenceTh" rowspan="1" colspan="1">
+        <p>
+Description    </p>
+            </td>
+        </tr>
+</thead><tfoot class=" "/><tbody class=" ">    <tr>
+            <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Arrow.express    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+instance property    </p>
+            </td>
+                <td class="confluenceTd" rowspan="1" colspan="1">
+        <p>
+Express module instance.    </p>
+            </td>
+        </tr>
+</tbody>        </table>
+            </div>
+    <p>
+    </p>
+    </div>
+    </div>
+    <div class="section section-2 " id="43299747_ArrowBuilderReleaseNotes-ArrowBuilder0.4.3-11June2015">
+        <h2 class="heading "><span>Arrow Builder 0.4.3 - 11 June 2015</span></h2>
+    <p>
+Arrow Builder 0.4.3 is a patch release, addressing high-priority issues from previous releases.    </p>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-NewFeature">
+        <h3 class="heading "><span>New Feature</span></h3>
+    <p>
+Add ability to return response results in a specific format by adding the format extension as a suffix to the response.  Supported extensions are <tt class=" ">json</tt>, <tt class=" ">xml</tt>, <tt class=" ">csv</tt>, <tt class=" ">yaml</tt>, <tt class=" ">yml</tt>, <tt class=" ">txt</tt> and <tt class=" ">js</tt>.  For example, if the API call is the the <tt class=" ">/api/foo</tt> path, to retrieve results as XML, use <tt class=" ">/api/foo.xml</tt>.    </p>
+    </div>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-FixedIssues.4">
+        <h3 class="heading "><span>Fixed Issues</span></h3>
+<ul class=" "><li class=" ">    <p>
+API-455: Model: Query - Specified order of data is not correctly returned    </p>
+</li><li class=" ">    <p>
+API-785: Azure connector causes crash on start-up when wiring up Models    </p>
+</li><li class=" ">    <p>
+API-831: Arrow apps in VPCs always use the public ACS environment    </p>
+</li><li class=" ">    <p>
+API-832: Arrow apps in VPCs created with a default user named &quot;undefined&quot;    </p>
+</li></ul>    </div>
+    </div>
+    <div class="section section-2 " id="43299747_ArrowBuilderReleaseNotes-ArrowBuilder0.4.1-29May2015">
+        <h2 class="heading "><span>Arrow Builder 0.4.1 - 29 May 2015</span></h2>
+    <p>
+Arrow Builder 0.4.1 is a patch release, addressing high-priority issues from previous releases.    </p>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-FixedIssues.5">
+        <h3 class="heading "><span>Fixed Issues</span></h3>
+<ul class=" "><li class=" ">    <p>
+API-812: When using SSL via api doc, browser security exception is received    </p>
+</li><li class=" ">    <p>
+API-813: Using Count which matches 0 records should not return 404, but 200 with result of 0    </p>
+</li></ul>    </div>
+    </div>
+    <div class="section section-2 " id="43299747_ArrowBuilderReleaseNotes-ArrowBuilder0.4.0-21May2015">
+        <h2 class="heading "><span>Arrow Builder 0.4.0 - 21 May 2015</span></h2>
+    <p>
+Initial release.    </p>
+    <div class="section section-3 " id="43299747_ArrowBuilderReleaseNotes-KnownIssues.1">
+        <h3 class="heading "><span>Known Issues</span></h3>
+    <div class="section section-4 " id="43299747_ArrowBuilderReleaseNotes-ETIMEDOUTisreturnedwhenyoupublishanArrowapp">
+        <h4 class="heading "><span>ETIMEDOUT is returned when you publish an Arrow app</span></h4>
+    <p>
+Occasionally, when publishing an Arrow application, the CLI may return an ETIMEOUT error (<a class="external-link external-link" href="https://jira.appcelerator.org/browse/CLI-654" target="_blank">CLI-654</a>).  To workaround this issue, try republishing the application again.    </p>
+    </div>
+    </div>
+    </div>
+        </div><a id="editButton" href="https://wiki.appcelerator.org/pages/editpage.action?pageId=43299747"><span>Edit</span></a>
+    
+        <div class="footer">
+            Created with <a href="http://k15t.com/display/web/Scroll-Wiki-EclipseHelp-Exporter-for-Confluence" target="_blank">Scroll EclipseHelp Exporter for Confluence</a>.
+        </div>
+    </div>
+</body>
+</html>
